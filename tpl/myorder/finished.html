@@ -1,0 +1,146 @@
+<div ng-controller="finished">
+	<div class="order-top">
+		<div>
+			<span>车牌号</span>
+			<input type="text" class="form-control" name="" id="" value="{{s_licenseNo}}" ng-model="s_licenseNo" />
+		</div>
+		<div>
+			<span>车架号</span>
+			<input type="text" class="form-control" name="" id="" value="{{s_frameNo}}" ng-model="s_frameNo" />
+		</div>
+		<div>
+			<span>客户姓名</span>
+			<input type="text" class="form-control" name="" id="" value="{{s_custName}}" ng-model="s_custName" />
+		</div><br />
+		<div>
+			<span>开始时间</span>
+			<input class="datainp form-control no-border" id="datebut1" type="text" placeholder="请选择日期" value="{{s_startDate}}" ng-model="s_startDate">
+			<a ng-click= "sta()" class="iconfont icon-rili datestar"></a>
+
+		</div>
+		<div>
+			<span>结束时间</span>
+			<input class="datainp form-control no-border" id="datebut2" type="text" placeholder="请选择日期" value="{{s_endDate}}" ng-model="s_endDate">
+			<a ng-click="endDate()" class="iconfont icon-rili datestar"></a>
+
+		</div>
+		<div>
+			<span>预约开始时间</span>
+			<input class="datainp form-control no-border" id="datebut3" type="text" placeholder="请选择日期">
+			<a ng-click="yuyue()"  class="iconfont icon-rili datestar"></a>
+
+		</div>
+		<div>
+			<span>预约结束时间</span>
+			<input class="datainp form-control no-border" id="datebut3" type="text" placeholder="请选择日期">
+			<a ng-click="yuyue()"  class="iconfont icon-rili datestar"></a>
+
+		</div>
+		<p class=" btns" ng-click="sos()">搜索</p>
+	</div>
+
+<div class="topheader " ng-controller="sosuo">
+	<ul class="row clearfix">
+		<li class="col-md-3 " ui-sref="myorder">
+			<a>全部订单</a>
+		</li>
+		<li class="col-md-3" ui-sref="unfinished">
+			<a>未完成订单</a>
+		</li>
+		<li class="col-md-3" ui-sref="nopaid">
+			<a>待之付订单</a>
+		</li>
+		<li class="col-md-3 active" ui-sref="finished">
+			<a>已之付订单</a>
+		</li>
+	</ul>
+</div>
+<table border="1" cellspacing="" cellpadding=""  >
+			<tr>
+				<th>客户姓名</th>
+				<th>车牌号</th>
+				<th>商业保费</th>
+				<th>交强保费</th>
+				<th>车船税</th>
+				<th>商业投保单号</th>
+				<th>交强投保单号</th>
+				<th>商业保单号</th>
+				<th>交强保单号</th>
+				<th>已联系次数</th>
+				<th>已报价次数</th>
+				<th>结束码</th>
+				<th>创建时间</th>
+				<th>预约时间</th>
+				<th>物流公司</th>
+				<th>物流单号</th>
+				<th>订单状态</th>
+				
+				
+				
+				<th></th>
+			</tr>
+		</tr>
+						<tr ng-repeat="site in data" data-orderId="{{site.orderId}}">
+			<td> {{site.custName}} </td>
+			<td>{{site.licenseNo}}</td>
+			<td>{{site.biPremium| currency: "¥"}}</td>
+			<td>{{site.ciPremium| currency: "¥"}}</td>
+			<td>{{site.vehicleTaxPremium| currency: "¥"}}</td>
+			<td>{{site.biProposalNo}}</td>
+			<td>{{site.ciProposalNo}}</td>
+			<td>{{site.biPolicyNo}}</td>
+			<td>{{site.ciPolicyNo}}</td>
+			<td >998</td>
+			<td >99</td>
+			<td>{{site.endCode}}</td>
+			<td>{{site.createTime|date:"yyyy/MM/dd " }}</td>
+			<td >{{site.reserveTime|date:"yyyy/MM/dd "}}</td>
+			<td></td>
+			<td></td>
+			<td>{{site.orderStatus}}</td>
+
+			<td>
+					<a href="./xian.html" data-orderId="{{site.orderId}} "  ng-click="ver(site.orderId,site.orderStatus,data)">查看</a>
+			</td>
+		</tr>
+
+</table>
+<div class="row">
+		<nav class="pa">
+			<ul class="pager">
+				<li>
+					<a ng-click="fst()">首页</a>
+				</li>
+				<li>
+					<a ng-click="up()">上一页</a>
+				</li>
+				<li>
+					<a ng-click="dowen()">下一页</a>
+				</li>
+				<li>
+					<a ng-click="last()">尾页</a>
+				</li>
+			</ul>
+		</nav>
+	</div>	
+	<div class="row">
+		<nav class="pa2" style="display: none;">
+			<ul class="pager">
+				<li>
+					<a ng-click="s_fst()">首页</a>
+				</li>
+				<li>
+					<a ng-click="s_up()">上一页</a>
+				</li>
+				<li>
+					<a ng-click="s_dowen()">下一页</a>
+				</li>
+				<li>
+					<a ng-click="s_last()">尾页</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+	
+	
+</div>

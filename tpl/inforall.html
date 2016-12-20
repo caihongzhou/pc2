@@ -1,0 +1,244 @@
+<div class="welcome"  ng-controller="detailed">
+	<div class="detailed ">
+		<div class="header">
+			<div class="headerbox clearfix">
+				<div class=" clearfix">
+					<em><img src="./img/logo.png"/></em>
+					<i>点点云服</i>
+				</div>
+				<div></div>
+				<div  ng-click="duanxin()" style="cursor: pointer;">发送客户短信</div>
+			</div>
+
+		</div>
+		<div class="borderline"></div>
+		<div class="detailedbox">
+			<div class="main">
+				<table border="1" cellspacing="" cellpadding="">
+					<tr>
+						<th colspan="">订单详情</th>
+
+					</tr>
+					<tr>
+						<td ng-model="_orderId" data-orderId="{{_orderId}}">订单号 ：<span ng-model="_showId">{{_showId}}</span> </td>
+
+					</tr>
+					<tr>
+						<td ng-model="__createTime">创建时间 ：<span>{{_createTime}}</span></td>
+
+					</tr>
+					<tr>
+						<td ng-model="_type">数据来源 ：<span>{{_type}}</span></td>
+
+					</tr>
+				</table>
+
+				<table border="1" cellspacing="" cellpadding="">
+					<tr>
+						<th colspan="2">基本信息
+							<a ui-sref="basic" class="adisable" ng-click="_chenge()"></a>
+						</th>
+
+					</tr>
+					<tr>
+						<td ng-model="_cityCode">投保城市 ：<span>{{_cityCodeshowe}}</span></td>
+						<td ng-model="_custName">客户姓名：<span>{{_custName}}</span></td>
+
+					</tr>
+					<tr>
+						<td ng-model="_cappId">客户身份证号 ：<span>{{_cappId}}</span></td>
+						<td ng-model="_phoneNo">手机号 ： <span>{{_phoneNo}}</span></td>
+
+					</tr>
+
+				</table>
+				<table border="1" cellspacing="" cellpadding="">
+					<tr>
+						<th colspan="2">投保人信息
+							<a ui-sref="applicant " class="adisable" ng-click="_chenge()"></a>
+						</th>
+
+					</tr>
+					<tr>
+						<td ng-model="_applicantName">投保人姓名 ：<span>{{_applicantName}}</span></td>
+						<td ng-model="_applicantMobile">手机号 ：<span>{{_applicantMobile}}</span></td>
+
+					</tr>
+					<tr>
+						<td ng-model="_applicantIdNo">投保人身份证 ：<span>{{_applicantIdNo}}</span></td>
+						<td>电子邮箱 ： <span></span></td>
+
+					</tr>
+
+				</table>
+				<table border="1" cellspacing="" cellpadding="">
+					<tr>
+						<th colspan="2">被保人信息
+							<a ui-sref="applicant " class="adisable" ng-click="_chenge()">
+						</th>
+
+					</tr>
+					<tr>
+						<td ng-model="_insuredName">被保人姓名 ：<span>{{_insuredName}}</span></td>
+						<td ng-model="_insuredMobile">手机号 ：<span>{{_insuredMobile}}</span></td>
+
+					</tr>
+					<tr>
+						<td ng-model="_insuredIdNo">被保人身份证 ：<span>{{_insuredIdNo}}</span></td>
+						<td>电子邮箱 ： <span></span></td>
+
+					</tr>
+
+				</table>
+				<table border="1" cellspacing="" cellpadding="">
+					<tr>
+						<th colspan="2">车辆信息
+							<a ui-sref="carinformation " class="adisable" ng-click="_chenge()">
+						</th>
+
+					</tr>
+					<tr>
+						<td ng-model="_licenseNo">车牌号 ：<span>{{_licenseNo}}</span></td>
+						<td ng-model="_modelName">厂牌型号 ：<span>{{_modelName}}</span></td>
+
+					</tr>
+					<tr>
+						<td ng-model="_frameNo ">车架号 ：<span>{{_frameNo}}</span></td>
+						<td ng-model="_engineNo">发动机号 ： <span>{{_engineNo}}</span></td>
+
+					</tr>
+					<tr>
+						<td ng-model="_registerDate  ">注册日期 ：<span>{{_registerDate}}</span></td>
+						<td ng-model="_specialCarFlag ">过户车 ： <span>{{_specialCarFlag}}</span></td>
+
+					</tr>
+				</table>
+				<table border="1" cellspacing="" cellpadding="" class="htl">
+					<tr>
+						<th colspan="3">承保信息
+							<a style="cursor: pointer;" class="adisable" ng-click="_chengeno()"></a>
+						</th>
+
+					</tr>
+					<tr>
+						<td ng-model="_insureComCode" ng-repeat="ssa in findC | filter:_insureComCode "> 保险：<span>{{ssa.companyName}}</span></td>
+						<td colspan="2" ng-model="_totalPremium">保费（元）：<span>{{_totalPremium|currency: "¥"}}</span></td>
+
+					</tr>
+					<tr>
+						<td colspan="3" class="clearfix">
+							<div class="s" ng-model="_Credit">报单积分：<span>{{_Credit}}</span></div>
+							<div class="s">奖励积分</div>
+							<div class="s">
+								<p ng-repeat="ste in _dealCredit  " ng-init="outindex=$index">
+
+									<em ng-repeat="b in ste track by $index" ng-init="innerindex=$index"><i>{{b}}</i><i></i></em>
+								</p>
+							</div>
+						</td>
+					</tr>
+
+					<tr class="widh">
+						<td ng-model="_ciPremium">交强险 ：<span>{{_ciPremium|currency: "¥"}}</span></td>
+						<td>保险日期 </td>
+						<td ng-model="_ciStartDate">{{_ciStartDate}}至{{_ciStartDate2}}</td>
+					</tr>
+					<tr>
+						<td colspan="3" ng-model="_vehicleTaxPremium">车船税 ：<span>{{_vehicleTaxPremium|currency: "¥"}}</span></td>
+					</tr>
+					<tr>
+						<td ng-model="_biPremium">商业险 ：<span>{{_biPremium|currency: "¥"}}</span></td>
+						<td>保险日期 </td>
+						<td ng-model="_biStartDate">{{_biStartDate}}至{{_biStartDate2}}</td>
+					</tr>
+				</table>
+				<table border="1" cellspacing="" cellpadding="" class="htl">
+					<tr>
+						<th colspan="3">险别
+							<a style="cursor: pointer;" class="adisable" ng-click="_chengeno()"></a>
+						</th>
+
+					</tr>
+					<tr>
+						<td ng-repeat="ssa in findC | filter:_insureComCode "> 保险 <span>{{ssa.companyName}}</span></td>
+						<td>保额（元）<span></span></td>
+						<td>保费（元）<span></span></td>
+					</tr>
+					<tr ng-repeat="site in kindList">
+						<td>{{site.kindCode|codelfilter}}<span></span></td>
+						<td>{{site.amount.split(".")[0]|amountfilter}}<span></span></td>
+						<td>{{site.premium|currency: "¥"}}<span></span></td>
+					</tr>
+
+				</table>
+				<table border="1" cellspacing="" cellpadding="" class="">
+					<tr>
+						<th colspan="3">配送信息
+							<a ui-sref="applicant " class="adisable" ng-click="_chenge()"></a>
+						</th>
+
+					</tr>
+					<tr>
+						<td ng-model="_addresseeName"> 姓名 ： <span>{{_addresseeName}}</span></td>
+						<td ng-model="_addresseeMobile">手机号 ： <span>{{_addresseeMobile}}</span></td>
+
+					</tr>
+					<tr>
+						<td ng-model="_addresseeDetails"> 配送地址 ： <span>{{_cityCodeshowes}}{{_addresseeDetails}}</span></td>
+						<td ng-modes="_gift">投保礼 ：<span>{{_gift}}</span></td>
+
+					</tr>
+
+				</table>
+				<button class="btn btn-lg  btn-block weiwanc" ng-click="sureque()"  >确定核保</button>
+				<button class="btn btn-lg  btn-block pad" disabled="disabled" style="background:#ccc; color:#474747" >已支付</button>
+				<button class="btn btn-lg  btn-block pads" disabled="disabled" style="background:#ccc; color:#474747" >未完成</button>
+				<button class="btn btn-lg  btn-block shixiao" disabled="disabled"  style="background:#ccc; color:#474747"  >已失效</button>
+				<div class="daizhi">
+					<button class="btn btn-lg btn-block" ng-click="zhifu()" >支付</button> 
+					<button class="btn btn-lg btn-block" ngclick="diazhifu()" >代付</button> 
+					<button class="btn btn-lg btn-block" ng-click="chongjian()" >重建</button> 
+				</div>
+			
+		</div>
+		<div class="cont-left">
+			<div class="le-cont" ng-click="phone_tag()">
+				<img src="./img/phone.png" />
+
+			</div>
+			<ul ng-hide="phone_show">
+				<li>订单号：<em></em></li>
+				<li>客户姓名：<em></em></li>
+				<li>车牌号：</li>
+
+				<li>手机号：<input type="tel" ng-model="number" placeholder="123456788" vlue="112345678" /></li>
+				<li>电话号：<em></em></li>
+				<li>结束码：</li>
+				<li><button class="active">拨打</button><button>挂断</button></li>
+			</ul>
+
+		</div>
+
+	</div>
+	<div class="flogbox">
+	<div id="flog">
+		<div class="titles">点点云服</div>
+	<div>
+		<em class="texta">
+			车辆信息不全
+		</em>
+	</div>
+	<p ng-click="sures()">确定</p>
+	</div>
+</div>
+<div class="codes">
+	<div id="flog">
+		<div class="titles">点点云服</div>
+	<div>
+		输入验证码：<input type="text" name="" placeholder="输入验证码" class="form-control no-border" id="" ng-model="_codes" value="{{_codes}}" />
+	</div>
+	<p ng-click="codessure()">确定</p>
+	</div>
+</div>
+
+</div>

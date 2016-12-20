@@ -1,0 +1,302 @@
+<div class="steps">
+	<div class="borderss clearfix"></div>
+	<div class="borcont">
+
+		<div ui-sref="sigleone_2" class="active" style="cursor: pointer;">
+			<p></p>
+			<em>基本信息</em>
+			<i>1</i>
+		</div>
+		<div ui-sref="siglecar_2" class="active" style="cursor: pointer;">
+			<p></p>
+			<em>车辆信息</em>
+			<i>2</i>
+		</div>
+		<div class="active">
+			<p></p>
+			<em>承保信息</em>
+			<i>3</i>
+		</div>
+		<div>
+			<p></p>
+			<em>比价信息</em>
+			<i>4</i>
+		</div>
+		<div>
+			<p></p>
+			<em>配送信息</em>
+			<i>5</i>
+		</div>
+	</div>
+</div>
+<div class="Ins-box" ng-controller="basic_chengbao">
+	<h2>填写详细信息</h2>
+	<div class="Ins-cont  ">
+		<h3>承保信息</h3>
+		<form name="Insform" class="form-validation cont-right ">
+			<div class="checkbox m-b-md m-t-none" ng-click="comp_time()">
+				<p>
+					<a>一键获取保险期间</a>
+				</p>
+			</div>
+			<div class="trues">
+				<i>交强险 : </i>
+				<!--<input type="text" placeholder="交强险" id="inputphone" pattern="" class="form-control no-border" ng-model="" ng-focus="cityBlock()"  value="交强险"   >-->
+				<label class="i-checks">
+            		  <input  class="chec" type="checkbox" ng-model="agree_1" ng-change="jiaos()" ng-init="agree_1 = false" >
+					<em class="bb"></em>
+					<b class="bb" ng-if="agree_1"></b>
+					</label>
+			</div>
+			<div class="datas jiao">
+				<i>交强保险期时间 : </i>
+
+				<input class="datainp form-control no-border" id="datebut" type="text" placeholder="请选择日期" value="{{_ciStartDate| date:'yyyy-MM-dd'}}" ng-model="_ciStartDate">
+				<a ng-click="ciDate()" class="iconfont icon-rili datestar"></a>
+				至
+				<input class="datainp form-control no-border" id="dateend" type="text" placeholder="请选择日期" value="{{_ciStartDate_2| date:'yyyy-MM-dd'}}" ng-model="_ciStartDate_2">
+				<a ng-click="ciDate_2()" class="iconfont icon-rili dateend"></a>
+
+			</div>
+			<div class="trues ">
+				<i>商业险 : </i>
+				<!--<input type="text" placeholder="商业险" id="inputphone" pattern="" class="form-control no-border" ng-model="city" ng-focus="cityBlock()" value="商业险" >-->
+				<label class="i-checks">
+            		  <input  class="chec" type="checkbox" ng-model="agrees" ng-change="shangs()" ng-init="agrees = false" >
+					<em class="bb"></em>
+					<b class="bb" ng-if="agrees"></b>
+					</label>
+			</div>
+			<div class="datas shang">
+				<i>商业保险期时间 : </i>
+
+				<input class="datainp form-control no-border" id="datebut1" type="text" placeholder="请选择日期" value="{{_biStartDate| date:'yyyy-MM-dd'}}" ng-model="_biStartDate">
+				<a ng-click="biDate()" class="iconfont icon-rili datestar"></a>
+				至
+				<input class="datainp form-control no-border" id="dateend_2" type="text" placeholder="请选择日期" value="{{_biStartDate_2| date:'yyyy-MM-dd'}}" ng-model="_biStartDate_2">
+				<a ng-click="biDate_2()" class="iconfont icon-rili dateend"></a>
+
+			</div>
+			<div ng-init="kindList ">
+				<div class="trues">
+					<i ng-model="con"></i>
+					<input type="text" placeholder="机动车损失险" id="bs" value="{{_name|codelfilter}}" class="form-control no-border">
+					<label class="i-checks">
+            		  <input  class="chec" type="checkbox" ng-model="agree_3" ng-change="bs()" ng-init="agree_3 = false" >
+					<em></em>
+					<b  ng-if="agree_3"></b>
+					
+					</label>
+					<label class="i-franchise">
+            		  <input  class="chec" type="checkbox" ng-model="franchise_1" ng-change="cs()" ng-init="franchise_1 = false" >
+					<em ng-model="bu" ng-init="bu=Y"></em>不计免赔
+					<b  ng-if="franchise_1"  ></b>
+					
+					</label>
+					<p ng-model="vehicle" class="wos">{{vehicle}}</p>
+				</div>
+				<div class="trues">
+					<i></i>
+					<input type="text" placeholder="商业第三者责任险" id="bs1" value="{{_name2|codelfilter}}" class="form-control no-border">
+					<label class="i-checks">
+            		  <input  class="chec" type="checkbox" ng-model="agree_4" ng-change="bs1()" ng-init="agree_4 = false" >
+					<em></em>
+					<b  ng-if="agree_4"></b>
+					
+					</label>
+					<label class="i-franchise fra_1">
+            		  <input  class="chec" type="checkbox" ng-model="franchise_2" ng-change="cs1()" ng-init="franchise_2 = false" >
+					<em></em>不计免赔
+					<b  ng-if="franchise_2"  ></b>
+					
+					</label>
+					<p ng-model="vehicle" class="wos" ng-click="show_1()"><em ng-model="con2" ng-init="zi={'show':'5万','tex':'500000'}">{{zi.show|amountfilter}}</em><em class="iconfont  " ng-class="classs"></em></p>
+					<div class="chooses" ng-hide="sh_1">
+						<ul>
+							<li ng-repeat="x in records" ng-click="snn(x,data)">{{x.show}}
+								<p style="display: none;">{{x.tex}}</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="trues long ">
+					<i></i>
+					<input type="text" placeholder="车上人员责任保险（驾驶员）" id="bs2" value="{{_name3|codelfilter}}" class="form-control no-border ">
+					<label class="i-checks">
+            		  <input  class="chec" type="checkbox" ng-model="agree_5" ng-change="bs2()" ng-init="agree_5 = false" >
+					<em></em>
+					<b  ng-if="agree_5"></b>
+					
+					</label>
+					<label class="i-franchise fra_1">
+            		  <input  class="chec" type="checkbox" ng-model="franchise_3" ng-change="cs2()" ng-init="franchise_3 = true" >
+					<em></em>不计免赔
+					<b  ng-if="franchise_3"  ></b>
+					
+					</label>
+					<p ng-model="vehicle" class="wos" ng-click="show_2()"><em ng-model="con3" ng-init="dri={show:'5万',tex:'50000'}">{{dri.show|amountfilter}}/座</em><em class="iconfont  " ng-class="cla"></em></p>
+					<div class="chooses ders" ng-hide="sh_2">
+						<ul>
+							<li ng-repeat="d in driver" ng-click="drivers(d,data)">{{d.show}}</li>
+						</ul>
+					</div>
+				</div>
+				<div class="trues  ">
+					<i></i>
+					<input type="text" placeholder="车上人员责任保险（乘客）" id="bs3" value="{{_name4|codelfilter}}" class="form-control no-border ">
+					<label class="i-checks">
+            		  <input  class="chec" type="checkbox" ng-model="agree_6" ng-change="bs3()" ng-init="agree_6 = false" >
+					<em></em>
+					<b  ng-if="agree_6"></b>
+					
+					</label>
+					<label class="i-franchise fra_1">
+            		  <input  class="chec" type="checkbox" ng-model="franchise_4" ng-change="cs3()" ng-init="franchise_4 = true" >
+					<em></em>不计免赔
+					<b  ng-if="franchise_4"  ></b>
+					
+					</label>
+					<p ng-model="vehicle" class="wos" ng-click="show_3()"><em ng-init="pas={show:'5万',tex:'50000'}">{{pas.show|amountfilter}}/座</em><em class="iconfont  " ng-class="cla1"></em></p>
+					<div class="chooses ders" ng-hide="sh_3">
+						<ul>
+							<li ng-repeat="d in driver" ng-click="passengers(d,data)">{{d.show}}
+
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="trues">
+					<i></i>
+					<input type="text" placeholder="全车盗抢险" id="bs4" value="{{_name5|codelfilter}}" class="form-control no-border">
+					<label class="i-checks">
+            		  <input  class="chec" type="checkbox" ng-model="agree_7" ng-change="bs4()" ng-init="agree_7 = false" >
+					<em></em>
+					<b  ng-if="agree_7"></b>
+					
+					</label>
+					<label class="i-franchise">
+            		  <input  class="chec" type="checkbox" ng-model="franchise_5"   ng-change="cs4()" ng-init="franchise_5 = true" >
+					<em></em>不计免赔
+					<b  ng-if="franchise_5"  ></b>
+					
+					</label>
+					<p ng-model="pilfer" class="wos">{{pilfer}}</p>
+				</div>
+				<div class="trues">
+					<i></i>
+					<input type="text" placeholder="车身划痕损失险" id="bs5" value="{{_name7|codelfilter}}" class="form-control no-border">
+					<label class="i-checks">
+            		  <input  class="chec" type="checkbox" ng-model="agree_8" ng-change="bs5()" ng-init="agree_8 = false" >
+					<em></em>
+					<b  ng-if="agree_8"></b>
+					
+					</label>
+					<label class="i-franchise fra_1">
+            		  <input  class="chec" type="checkbox" ng-model="franchise_6" ng-change="cs5()" ng-init="franchise_6 = true" >
+					<em></em>不计免赔
+					<b  ng-if="franchise_6"></b>
+					
+					</label>
+					<p ng-model="vehicle" class="wos" ng-click="show_4()"><em ng-init="cards='200'">{{cards}}</em><em class="iconfont  " ng-class="cla2"></em></p>
+					<div class="chooses" ng-hide="sh_4">
+						<ul>
+							<li ng-repeat="x in carbody" ng-click="ca(x,data)">{{x}}</li>
+						</ul>
+					</div>
+				</div>
+				<div class="trues">
+					<i></i>
+					<input type="text" placeholder="指定修理厂" id="bs6" value="{{_name8|codelfilter}}" class="form-control no-border">
+					<label class="i-checks">
+            		  <input  class="chec" type="checkbox" ng-model="agree_9" ng-change="bs6()" ng-init="agree_9 = false" >
+					<em></em>
+					<b  ng-if="agree_9"></b>
+					
+					</label>
+
+				</div>
+				<div class="trues">
+					<i></i>
+					<input type="text" placeholder="自然损失险" id="bs7" value="{{_name9|codelfilter}}" class="form-control no-border">
+					<label class="i-checks">
+            		  <input  class="chec" type="checkbox" ng-model="agree_10" ng-change="bs7()" ng-init="agree_10 = false" >
+					<em></em>
+					<b  ng-if="agree_10"></b>
+					
+					</label>
+
+				</div>
+				<div class="trues">
+					<i></i>
+					<input type="text" placeholder="玻璃单独破碎险" id="bs8" value="{{_name10|codelfilter}}" class="form-control no-border">
+					<label class="i-checks">
+            		  <input  class="chec" type="checkbox" ng-model="agree_11" ng-change="bs8()" ng-init="agree_11 = false" >
+					<em></em>
+					<b  ng-if="agree_11"></b>
+					
+					</label>
+
+					<p ng-model="vehicle" class="wos" ng-click="show_5()"><em ng-init="gl={'show':'国产玻璃','tex':'1'}">{{gl.show|flage}}</em><em class="iconfont  " ng-class="cla3"></em></p>
+					<div class="chooses" ng-hide="sh_5">
+						<ul>
+							<li ng-repeat="x in glass" ng-click="gla(x,data)">{{x.show}}</li>
+						</ul>
+					</div>
+				</div>
+				<div class="trues">
+					<i></i>
+					<input type="text" placeholder="发动机涉水损失险" id="bs9" class="form-control no-border">
+					<label class="i-checks">
+            		  <input  class="chec" type="checkbox" ng-model="agree_12" ng-change="bs9()" ng-init="agree_12 = false" >
+					<em></em>
+					<b  ng-if="agree_12"></b>
+					
+					</label>
+
+				</div>
+				<div class="trues">
+					<i></i>
+					<input type="text" placeholder="机动车损失保险无法找到第三方" id="bs10" class="form-control no-border">
+					<label class="i-checks">
+            		  <input  class="chec" type="checkbox" ng-model="agree_13" ng-change="bs10()" ng-init="agree_13 = false" >
+					<em></em>
+					<b  ng-if="agree_13"></b>
+					
+					</label>
+
+				</div>
+			</div>
+			<button class="btn btn-lg  btn-block" ng-click="srder()">下一步</button>
+		</form>
+		<div class="cont-left">
+			<div class="le-cont" ng-click="phone_tag()">
+				<img src="./img/phone.png" />
+
+			</div>
+			<ul ng-hide="phone_show">
+				<li>订单号：<em></em></li>
+				<li>客户姓名：<em></em></li>
+				<li>车牌号：</li>
+
+				<li>手机号：<input type="tel" ng-model="number" placeholder="123456788" vlue="112345678" /></li>
+				<li>电话号：<em></em></li>
+				<li>结束码：</li>
+				<li><button class="active">拨打</button><button>挂断</button></li>
+			</ul>
+
+		</div>
+
+	</div>
+	<div class="flogbox">
+	<div id="flog">
+		<div class="titles">点点云服</div>
+	<div>
+		<em class="texta">
+			车辆信息不全
+		</em>
+	</div>
+	<p ng-click="sures()">确定</p>
+	</div>
+</div>
+</div>

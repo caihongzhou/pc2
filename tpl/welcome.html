@@ -1,0 +1,56 @@
+<div class="welcome" ng-controller="welcome">
+	<div class="header">
+		<div class="headerbox clearfix">
+			<div class=" clearfix">
+				<em><img src="./img/logo.png"/></em>
+				<i>点点云服</i>
+			</div>
+
+			<div>
+				<div class=" clearfix">
+					<div class="col-md-12 column">
+						<ul class="nav nav-tabs">
+							<li >
+								<a href="./getData.html">获取数据</a>
+							</li>
+							<li ng-click="remove()">
+								<a  href="./outSingle.html">我要出单</a>
+							</li>
+							<li class="" >
+								<a href="./MyOrder.html">我的订单</a>
+							</li>
+
+						</ul>
+					</div>
+
+				</div>
+
+			</div>
+			<div class=" userph clearfix">
+				<div ng-model="fistPhoto">
+					<img ng-src="{{fistPhoto}}" err-src="" />
+				</div>
+				<div ng-model="firstName">{{firstName}}</div>
+
+				<div ng-click="singout()">
+					<a ui-sref="lo"><img src="./img/tuichu1.png"/></a>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+	<div class="borderline"></div>
+	<div class="bannerbox" >
+		<div class="banner" ui-view>
+			<img id="banners" src="./img/PCbanner.png" />
+		</div>
+	</div>
+
+</div>
+<script type="text/javascript">
+	var h =document.body.clientHeight-62;
+	var banner = document.getElementById("banners");
+	//alert(h)
+	banner.style.height=h+"px";
+</script>

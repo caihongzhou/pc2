@@ -1,0 +1,128 @@
+<div class="header" ng-controller="top">
+	<div class="headerbox clearfix">
+		<div class=" clearfix">
+			<em><img src="./img/logo.png"/></em>
+			<i>点点云服</i>
+		</div>
+
+		<div>
+
+		</div>
+		<div class=" userph clearfix">
+			<div ng-model="fistPhoto">
+				<img ng-src="{{fistPhoto}}" err-src="" />
+			</div>
+			<div ng-model="firstName">{{firstName}}</div>
+
+			<div ng-click="singout()">
+				<a href="./index.html"><img src="./img/tuichu1.png" /></a>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+<div class="borderline"></div>
+<div class="basic-box" ng-controller="basic">
+	<h2>填写详细信息</h2>
+	<div class="basic-cont  ">
+		<h3>基本信息</h3>
+		<form name="form" class="form-validation cont-right " ng-model="_orderId" data-orderId="{{_orderId}}">
+
+			<div class="">
+
+				<div class="dv">
+					<i ng-model="_cityCode">投保城市 : </i>
+					<input type="text" placeholder="请输入投保城市" id="" value="{{_cityCodeshowe}}" class="form-control no-border" ng-model="_cityCodeshowe" ng-focus="cityBlock()" ng-change="changes()" >
+				</div>
+				<div class="abs dv">
+					<i>车牌 : </i>
+					<input type="text" placeholder="请输入车牌号" id="carnumb"  class="form-control no-border" ng-blur="chepai()" ng-model="_licenseNo" value="{{_licenseNo}}" required>
+					<div class="checkbox m-b-md m-t-none">
+						<label class="i-checks">
+            		  <input  class="chec" type="checkbox" ng-model="agree" ng-change="as()" ng-init="agree = false" ><i>新车</i>
+					<em></em>
+					<b  ng-if="agree"></b>
+					</label>
+					</div>
+
+				</div>
+				<div class="dv">
+					<i>客户姓名 : </i>
+					<input type="text" placeholder="请输入客户姓名" id="name"  class="form-control no-border" ng-model=" _custName" value="_custNameo"  required>
+				</div>
+				<div class="dv">
+					<i>手机号 : </i>
+					<input type="text" placeholder="请输入手机号" id="inputphone"  class="form-control no-border" ng-model="_phoneNo" value="_phoneNo" ng-blur="phone()" required>
+				</div>
+				<div class="dv">
+					<i>身份证号 : </i>
+					<input type="text" placeholder="请输入身份证号" id="cid"  class="form-control no-border" ng-model="_cappId" value="_cappId" ng-blur="ss()" >
+				</div>
+			</div>
+
+			<button class="btn btn-lg  btn-block" ng-click="Create()">保存</button>
+		</form>
+	<div class="selects">
+			<h3>请选择省市</h3>
+			<div class="info">
+				<form name="myForms" class="form-horizontal" role="form" ng-submit="save(address)">
+					<div class="form-group ">
+						
+						<div class="row checkbox">
+							<div class="col-md-4">
+							
+								<select class="form-control" ng-model="optionsName" ng-options=" value[0]  for value in sheng" ng-change="shengbranname(optionsName,data)">
+									<option value="">省</option>
+								</select>
+							</div>
+							<div class="col-md-4 ">
+								<select class="form-control" ng-model="address" ng-options="value[0] for value in ites " ng-change="shiname(address,data)" >
+									<option value="">市</option>
+								</select>
+							</div>
+							<div class="col-md-4">
+								<select class="form-control" ng-model="district" ng-options="value[0] for value in ites_2"  ng-change="xianqu(district,data)"required>
+									<option value="">区</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</form>
+
+			</div>
+			<div class="tn">
+				<botton class="btn btn-default" ng-click="close()">取消</botton>
+				<botton class=" btn btn-primary " ng-click="sure()">确定</botton>
+			</div>
+
+		</div>
+		</div>
+		<div  class="cont-left">
+			<div class="le-cont" ng-click="phone_tag()">
+				<img src="./img/phone.png"/>
+			
+			</div >
+			<ul ng-hide="phone_show">
+				<li>订单号：<em></em></li>
+				<li>客户姓名：<em></em></li>
+				<li>车牌号：</li>
+				
+				<li>手机号：<input type="tel" ng-model="number" placeholder="123456788" vlue="112345678"/></li>
+				<li>电话号：<em></em></li>
+				<li>结束码：</li>
+				<li><button class="active">拨打</button><button>挂断</button></li>
+			</ul>
+			
+		</div>
+<div class="flogbox">
+	<div id="flog">
+	<div>
+		<em class="texta">
+			车辆信息不全
+		</em>
+	</div>
+	<p ng-click="sures()">确定</p>
+	</div>
+</div>
+</div>

@@ -1,0 +1,214 @@
+<div class="steps" >
+	<div class="borderss clearfix"></div>
+	<div class="borcont">
+		
+		<div ui-sref="sigleone_2"  class="active" style="cursor: pointer;">
+			<p></p>
+			<em>基本信息</em>
+			<i>1</i>
+		</div>
+		<div ui-sref="siglecar_2" class="active" style="cursor: pointer;"  >
+			<p></p>
+			<em>车辆信息</em>
+			<i>2</i>
+		</div>
+		<div ui-sref="sigleins_2" class="active"   style="cursor: pointer;" >
+			<p></p>
+			<em>承保信息</em>
+			<i>3</i>
+		</div>
+		<div ui-sref="siglebijia_2" class="active"  style="cursor: pointer;" >
+			<p></p>
+			<em>比价信息</em>
+			<i>4</i>
+		</div>
+		<div ui-sref="sigleappli_2" class="node active"  style="cursor: pointer;" >
+			<p></p>
+			<em>配送信息</em>
+			<i>5</i>
+		</div>
+	</div>
+</div>
+
+<div class="applicant-box" ng-controller="basic_applic">
+	<h2>填写详细信息</h2>
+	<div class="applicant-cont  ">
+		<h3>投保人信息</h3>
+		<form name="applicantform" class="form-validation cont-right ">
+			<div class="checkbox m-b-md m-t-none">
+				<label class="i-checks">
+            		  <input  class="chec" type="checkbox" ng-model="agree3" ng-change="as1()" ng-init="agree3 = false" ><i>同车主</i>
+					<em></em>
+					<b  ng-if="agree3"></b>
+					</label>
+			</div>
+			<div class="tob">
+
+				<div class="dv">
+					<i>投保人姓名: </i>
+					<input type="text" placeholder="请输入投保人姓名" id="" class="form-control no-border" ng-model="_applicantName" vale="{{_applicantName}}" required>
+				</div>
+				<div class="dv">
+					<i>手机号 : </i>
+					<input type="text" placeholder="请输入手机号" id=""class="form-control no-border" ng-model="_applicantMobile" ng-blur="phone()"  value="{{_applicantMobile}}" required>
+				</div>
+
+				<div class="dv">
+					<i>身份证号 : </i>
+					<input type="text" placeholder="请输入身份证号" id="cid" class="form-control no-border" ng-model="_applicantIdNo" ng-blur="ss()" value="{{_applicantIdNo}} " required>
+				</div>
+			</div>
+
+		</form>
+		<h3>被保人信息</h3>
+		<form name="applicantform_2" class="form-validation cont-right ">
+			<div class="checkbox m-b-md m-t-none">
+				<label class="i-checks">
+            		  <input  class="chec" type="checkbox" ng-model="agree_2" ng-change="as2()" ng-init="agree_2 = false" ><i>同车主</i>
+					<em></em>
+					<b  ng-if="agree_2"></b>
+					</label>
+			</div>
+			<div class="btob">
+
+				<div class="dv">
+					<i>被投保人姓名: </i>
+					<input type="text" placeholder="请输入投保人姓名" id=""  class="form-control no-border" ng-model="_insuredName" value="{{_insuredName}}" required>
+				</div>
+				<div class="dv">
+					<i>手机号 : </i>
+					<input type="text" placeholder="请输入手机号" pattern="/^1[34578]\d{9}$/"   class="form-control no-border" ng-model="_insuredMobile" ng-blur="phone()" ng-model="{{_insuredMobile}}" required>
+				</div>
+
+				<div class="dv">
+					<i>身份证号 : </i>
+					<input type="text" placeholder="请输入身份证号" pattern="/(^\d{15}$)|(^\d{17}([0-9]|X)$)/" class="form-control no-border" ng-model="_insuredIdNo" value="_insuredIdNo" required>
+				</div>
+			</div>
+
+		</form>
+		<h3>配送信息</h3>
+		<form name="applicantform_3" class="form-validation cont-right ">
+
+			<div class="">
+				<div class="dv">
+					<i>投保礼: </i>
+					<input type="text" placeholder="请输入投保人信息" id="inputphone"  class="form-control no-border" ng-model="_gift" value="{{_gift}}" >
+				</div>
+				<div class="abs dv">
+					<i>收件人 : </i>
+					<input type="text" placeholder="请输入收件人" id="sw"  class="form-control no-border" ng-model="_addresseeName" value="{{_addresseeName}}" >
+					<div class="checkbox m-b-md m-t-none">
+						<label class="i-checks">
+            		  <input  class="chec" type="checkbox" ng-model="agree_3" ng-change="as3()" ng-init="agree_3 = false" ><i>同车主</i>
+					<em></em>
+					<b  ng-if="agree_3"></b>
+					</label>
+					</div>
+
+				</div>
+
+				<div class="abs dv">
+					<i>联系电话 : </i>
+					<input type="tel" placeholder="请输入联系电话" id="sw1" class="form-control no-border" ng-model="_addresseeMobile" ng-blur="shoji()" value="{{_addresseeMobile}}" >
+					<div class="checkbox m-b-md m-t-none">
+						<label class="i-checks">
+            		  <input  class="chec" type="checkbox" ng-model="agree_4" ng-change="as4()" ng-init="agree_4 = false" ><i>同车主</i>
+					<em></em>
+					<b  ng-if="agree_4"></b>
+					</label>
+					</div>
+
+				</div>
+				<div class="dv">
+					<i>报单邮箱 : </i>
+					<input type="text" placeholder="请输入报单邮箱" id=""  class="form-control no-border" ng-model="_policyEmail" value="{{_policyEmail}}"  ng-blur="emil()">
+				</div>
+				<div class="dv">
+					<i>收件人地址 : </i>
+					<input type="text" placeholder="请输入收件人地址" class="form-control no-border" ng-model="_cityCodeshowe" value="{{_cityCodeshowe}}" ng-focus="cityBlock()" >
+				</div>
+				<div class="dv">
+					<i>详细地址 : </i>
+					<input type="text" placeholder="请输入详细地址"  class="form-control no-border" ng-model="_addresseeDetails" value="{{_addresseeDetails}}" >
+				</div>
+				<div class="abs dv">
+					<i>被保人身份地址 : </i>
+					<input type="text" placeholder="请输入被保人身份地址" id="diz" pattern="" class="form-control no-border" ng-model="_insuredAddress" value="{{_insuredAddress}} ">
+					<div class="checkbox m-b-md m-t-none">
+						<label class="i-checks">
+            		  <input  class="chec" type="checkbox" ng-model="agree_5" ng-change="as5()" ng-init="agree_5 = false" ><i >同派送地址</i>
+					<em></em>
+					<b  ng-if="agree_5"></b>
+					</label>
+					</div>
+
+				</div>
+			</div>
+				<button class="btn btn-lg  btn-block" ng-click="applicant()">保存</button>
+		</form>
+		<div class="selects">
+			<h3>请选择省市</h3>
+			<div class="info">
+				<form name="myForms" class="form-horizontal" role="form" ng-submit="save(address)">
+					<div class="form-group ">
+						
+						<div class="row checkbox">
+							<div class="col-md-4">
+							
+								<select class="form-control" ng-model="optionsName" ng-options=" value[0]  for value in sheng" ng-change="shengbranname(optionsName,data)">
+									<option value="">省</option>
+								</select>
+							</div>
+							<div class="col-md-4 ">
+								<select class="form-control" ng-model="address" ng-options="value[0] for value in ites " ng-change="shiname(address,data)" >
+									<option value="">市</option>
+								</select>
+							</div>
+							<div class="col-md-4">
+								<select class="form-control" ng-model="district" ng-options="value[0] for value in ites_2"  ng-change="xianqu(district,data)"required>
+									<option value="">区</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</form>
+
+			</div>
+			<div class="tn">
+				<botton class="btn btn-default" ng-click="close()">取消</botton>
+				<botton class=" btn btn-primary " ng-click="sure()">确定</botton>
+			</div>
+
+		</div>
+		<div  class="cont-left">
+			<div class="le-cont" ng-click="phone_tag()">
+				<img src="./img/phone.png"/>
+			
+			</div >
+			<ul ng-hide="phone_show">
+					<li ng-model="_showId">订单号：<em>{{_showId}}</em></li>
+				<li ng-model="_custName">客户姓名：<em>{{_custName2}}</em></li>
+				<li ng-model="_licenseNo">车牌号：{{_licenseNo2}}</li>
+				
+				<li ng-model="_phoneNo">手机号：<input type="tel" ng-model="number" placeholder="123456788" vlue="{{_phoneNo}}"/></li>
+				<li>电话号：<em></em></li>
+				<li ng-model="_endCode">结束码：<em>{{_endCode}}</em></li>
+				<li><button class="active">拨打</button><button>挂断</button></li>
+			</ul>
+			
+		</div>
+	
+	</div>
+	<div class="flogbox">
+	<div id="flog">
+		<div class="titles">点点云服</div>
+	<div>
+		<em class="texta">
+			车辆信息不全
+		</em>
+	</div>
+	<p ng-click="sures()">确定</p>
+	</div>
+</div>
+</div>

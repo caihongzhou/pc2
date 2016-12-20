@@ -1,0 +1,233 @@
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+.login-box {
+  width: 100%;
+  padding-top: 0.11rem;
+}
+.login-box .login-header {
+  width: 1000px;
+  height: 0.4rem;
+  margin: 0 auto;
+}
+.login-box .login-header ul {
+  width: 100%;
+  height: 100%;
+}
+.login-box .login-header ul li {
+  height: 100%;
+  float: left;
+}
+.login-box .login-header ul li em,
+.login-box .login-header ul li i {
+  float: left;
+  text-align: center;
+}
+.login-box .login-header ul li em {
+  width: 0.4rem;
+  height: 100%;
+}
+.login-box .login-header ul li i {
+  color: #888888;
+  font-size: 0.18rem;
+  padding: 0.1rem;
+}
+.login-box .login-header ul li:nth-child(2) {
+  width: 1.46rem;
+  border-left: 1px solid #cccccc;
+  color: #000;
+  padding: 0.04rem 0.1rem;
+  font-size: 0.26rem;
+}
+.login-box .login-cont {
+  width: 1000px;
+  height: 59%;
+  margin: 0 auto;
+}
+.login-box .login-cont .contss-left {
+  width: 6.1rem;
+  height: 100%;
+  float: left;
+}
+.login-box .login-cont .cont-right {
+  float: left;
+  width: 3.3rem;
+  height: 100%;
+  padding-top: 5%;
+  box-sizing: border-box;
+}
+.login-box .login-cont .cont-right .login-title {
+  padding: 6% 0;
+  font-size: 0.2rem;
+  color: #06b5ff;
+  border-bottom: 1px solid #ccc;
+}
+.login-box .login-cont .cont-right .list-group-item {
+  padding: 0 7% 7.2%;
+}
+.login-box .login-cont .cont-right .form-control {
+  height: 12%;
+}
+.login-box .login-cont .cont-right input {
+  margin-top: 4%;
+  height: 12%;
+  font-size: 0.16rem;
+  line-height: 1;
+  padding: 3%;
+}
+.login-box .login-cont .cont-right input.chec {
+  height: 0.2rem;
+  line-height: 0.2rem;
+  margin-top: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 1;
+  display: none;
+}
+.login-box .login-cont .cont-right .i-checks {
+  position: relative;
+  width: 100%;
+}
+.login-box .login-cont .cont-right .i-checks i {
+  font-size: 0.14rem;
+  line-height: 0.16rem;
+}
+.login-box .login-cont .cont-right .i-checks em,
+.login-box .login-cont .cont-right .i-checks b {
+  position: absolute;
+  width: 0.15rem;
+  height: 0.15rem;
+  background: #fff;
+  border: 1px solid #ccc;
+  left: 0;
+  top: 2px;
+}
+.login-box .login-cont .cont-right .i-checks b {
+  border: 0;
+  background: url("../../img/gouxuan.png");
+}
+.login-box .login-cont .cont-right .reg {
+  padding: 3.8% 0;
+}
+.login-box .login-cont .cont-right .reg a {
+  color: #999999;
+}
+.login-footer {
+  width: 100%;
+  height: 19.7%;
+  background: url("../../img/border.png");
+  position: relative;
+}
+.login-footer .pic {
+  width: 1.5rem;
+  height: 163%;
+  position: absolute;
+  bottom: 0;
+  right: 15%;
+  background: url("../../img/foot.png") no-repeat;
+  background-size: 100% 100%;
+  z-index: 2;
+}
+.login-footer .er {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  margin: 0 auto;
+}
+.login-footer .er .erbox {
+  width: 1000px;
+  margin: 0 auto;
+  bottom: 0;
+  z-index: 2222;
+  overflow: hidden;
+  padding-top: .25rem;
+}
+.login-footer .er .erbox div {
+  float: left;
+}
+.login-footer .er .erbox div:nth-child(1) {
+  width: 88px;
+  height: 88px;
+}
+.login-footer .er .erbox div:nth-child(1) img {
+  width: 100%;
+  height: 100%;
+}
+.login-footer .er .erbox div:nth-child(2) {
+  font-size: 0.32rem;
+  padding-left: 0.2rem;
+  color: #fff;
+  height: 88px;
+}
+.los {
+  width: 100%;
+  height: 14.7%;
+}
+.borderline {
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+}
+#Forgot {
+  width: 100%;
+}
+#Forgot .m-b-lg {
+  width: 3.76rem;
+  height: 100%;
+  padding-top: 5%;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+#Forgot .m-b-lg .login-title {
+  padding: 6% 0;
+  font-size: 0.2rem;
+  color: #06b5ff;
+  border-bottom: 1px solid #ccc;
+}
+#Forgot .m-b-lg .list-group-item {
+  padding: 0 7% 7.2%;
+}
+#Forgot .m-b-lg .leb div {
+  position: relative;
+  padding-top: .2rem;
+}
+#Forgot .m-b-lg .leb div > i,
+#Forgot .m-b-lg .leb div input {
+  display: inline-block;
+}
+#Forgot .m-b-lg .leb div > i {
+  width: .8rem;
+  text-align: right;
+  margin-right: .1rem;
+}
+#Forgot .m-b-lg .leb div > input {
+  width: 2.3rem;
+}
+#Forgot .m-b-lg .leb div #code {
+  position: absolute;
+  width: .7rem;
+  height: .2rem;
+  top: .28rem;
+  right: .07rem;
+  background: #06b5ff;
+  border: 0;
+  font-size: .12rem;
+  border-radius: .03rem;
+  color: #fff;
+}
+#Forgot .m-b-lg .leb #sb {
+  margin-top: .2rem;
+  width: 3.07rem;
+  margin-left: .18rem;
+  background: #06b5ff;
+  border: 0;
+}
+/*# sourceMappingURL=login.css.map */

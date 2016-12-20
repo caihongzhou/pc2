@@ -1,0 +1,285 @@
+@color-blue: #06b5ff;
+@border-color: #ccc;
+.detailed{
+    width:100%;
+    font-size:.14rem;
+    .header{
+        width:1000px;
+        height:.62rem;
+        margin:0 auto;
+        .headerbox{
+            width:100%;
+            height:100%;
+            &>div{
+                float:left;
+                 padding-top:.1rem;
+                &:nth-child(1){
+                    width:2.28rem;
+                   
+                 em,
+                i {
+                    float: left;
+                    text-align: center;
+                }
+                em {
+                    width: 0.4rem;
+                    height: 100%;
+                }
+                i {
+                    color: #888888;
+                    font-size: 0.18rem;
+                    padding: 0.1rem;
+                }
+                }
+                &:nth-child(2){
+                    width:6.3rem;
+                    line-height: .4rem;
+                    
+                }
+                 &:nth-child(3){
+                    padding-top:.16rem;
+                    line-height: .4rem;
+                    color:#ff7c5f;
+                }
+            }
+        }
+    }
+    .detailedbox{
+        padding-top:.2rem;
+        width:1000px;
+        margin:0 auto;
+   .main{
+       .btn{
+           background:#ff704f;
+           width:4.0rem;
+           margin:.20rem auto 1rem;
+           color:#fff;
+           display: none;
+       } 
+       .daizhi{
+           display: none;
+           .btn{
+           background:#ff704f;
+           width:3.0rem;
+          margin:0 .15rem;
+           color:#fff;
+           display: block;
+           display: inline-block;
+         } 
+       }
+    }
+    table{
+        border-color: #ccc;
+       
+          border:none;
+        width:100%;
+        margin-bottom:.2rem;
+        border-top:2px solid #06b5ff;
+        font-size: .16rem;
+        border-collapse:collapse;
+        border-spacing:0;
+        tbody{
+            width:100%;
+        }
+        &:nth-child(2){
+            tr{
+                td{
+                    &:nth-child(1){
+                        width:172px;
+                    }
+                }
+            }
+        }
+        &:nth-child(5){
+            tr{
+                td{
+                    &:nth-child(1){
+                        width:308px;
+                    }
+                }
+            }
+        }
+        &:nth-child(6){
+            tr{
+                td{
+                    &:nth-child(1){
+                        width:474px;
+                    }
+                    &:nth-child(2){
+                        width:117px;
+                    }
+                    &:nth-child(3){
+                        width:400px;
+                    }
+                }
+            }
+        }
+        &:nth-child(8){
+            tr{
+                td{
+                    &:nth-child(1){
+                        width:180px;
+                    }
+                }
+            }
+        }
+        tr{
+            border: 1px solid #ccc;
+            
+        }
+        th{
+            background: #eee;
+            height:.5rem;
+            font-size: .16rem;
+           padding-left:.18rem;
+           -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+           box-sizing: border-box;
+            text-align:left;
+            color:#222;
+            width:100%;
+            position:relative;
+            border: 1px solid #ccc;
+            a{
+                position:absolute;
+                width:.4rem;
+                height:.4rem;
+                top:0;
+                right:0;
+                background:url(../../img/cheng_03.png) no-repeat;
+                background-size: 100% 100%;
+            }
+        }
+        td{
+               border: 1px solid #ccc;
+             padding-left:.18rem;
+           -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+           box-sizing: border-box;
+            text-align:left;
+            color:#474747;
+            height:.45rem;
+            line-height: .45rem;
+             div.s{
+               float: left;
+               padding-left: .2rem;
+               height:100%;
+               &:nth-child(1){
+                   width:459px;
+                   padding-left:0;
+               }
+               &:nth-child(2){
+                   width:1.17rem;
+                   border-left:1px solid #ccc;
+                   border-right: 1px solid #ccc;
+                   
+               }
+               &:nth-child(3){
+                   width:3.1rem;
+                   padding-left:0;
+                   
+               }
+               p{
+                    padding-left: .2rem;
+                   width:100%;
+                   border-bottom: 1px solid #ccc;
+                   &:last-child{
+                       border:0;
+                   }
+               }
+           }
+        }
+       &.htl{
+           tr:nth-child(2){
+               background: #d5ecff;
+           }
+           td{
+               &:nth-child(1){
+                  width:187px;
+               }
+           }
+       }
+        
+    }
+    }
+
+}
+body,html{
+    font-family: "微软雅黑";
+}
+.flogbox{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background: transparent;
+    top:0;
+    left:0;
+    display: none;
+}
+.codes{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background: transparent;
+    top:0;
+    left:0;
+    display: none;
+    #flog{
+        background:#fff;
+        color:#474747;
+       
+    }
+}
+.welcome{
+    position: relative;
+}
+#flog{
+    width:400px;
+    position:fixed;
+    top:50%;
+    left:50%;
+    //background:#eee;
+  //  color:#474747;
+  color:#fff;
+  background:rgba(0,0,0,0.5);
+    border:1px solid #ccc;
+     border-radius: 5px;
+   padding:.2rem;
+    -webkit-transform: translate(-50%);
+    -moz-transform: translate(-50%);
+    -ms-transform: translate(-50%);
+    -o-transform: translate(-50%);
+    transform: translate(-50%);
+    div{
+        text-align: center;
+        font-size: .16rem;
+        line-height: .28rem;
+      
+        &.titles{
+           
+            
+            font-size:.2rem;
+            margin-bottom:.2rem;
+        }
+        input{
+           
+            display: inline-block;
+            width:50%;
+        }
+    }
+    p{
+        text-align: center;
+        background:#FF704F;
+        color: #fff;
+        line-height: .3rem;
+        font-size: .16rem;
+        cursor:pointer;
+        width:200px;
+        margin:0 auto;
+       border-radius: 5px;
+        margin-top:.2rem;
+        &:active{
+             background:#ff3e1e;
+        }
+    }
+}

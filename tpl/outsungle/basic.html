@@ -1,0 +1,120 @@
+
+<div class="steps" >
+	<div class="borderss clearfix"></div>
+	<div class="borcont">
+		
+		<div class="active">
+			<p></p>
+			<em>基本信息</em>
+			<i>1</i>
+		</div>
+		<div>
+			<p></p>
+			<em>车辆信息</em>
+			<i>2</i>
+		</div>
+		<div>
+			<p></p>
+			<em>承保信息</em>
+			<i>3</i>
+		</div>
+		<div>
+			<p></p>
+			<em>比价信息</em>
+			<i>4</i>
+		</div>
+		<div>
+			<p></p>
+			<em>配送信息</em>
+			<i>5</i>
+		</div>
+	</div>
+</div>
+
+<div class="basic-box" ng-controller="basic">
+	<h2>填写详细信息</h2>
+	<div class="basic-cont  ">
+		<h3>基本信息</h3>
+		<form name="form" class="form-validation cont-right "  autocomplete="off" ng-model="_orderId" data-orderId="{{_orderId}}">
+
+			<div class="">
+
+				<div class="dv">
+					<i ng-model="_cityCode">投保城市 : </i>
+					<input type="text" placeholder="请输入投保城市" id=""  autocomplete="off" value="{{_cityCodeshowe}}" class="form-control no-border" ng-model="_cityCodeshowe" ng-focus="cityBlock()" ng-change="changes()" >
+				</div>
+				<div class="abs dv">
+					<i>车牌 : </i>
+					<input type="text" placeholder="请输入车牌号" autocomplete="off" id="carnumb"  class="form-control no-border" ng-blur="chepai()" ng-model="_licenseNo" value="{{_licenseNo|uppercase}}" required>
+					<div class="checkbox m-b-md m-t-none">
+						<label class="i-checks">
+            		  <input  class="chec" type="checkbox" ng-model="agree" ng-change="as()" ng-init="agree = false" ><i>新车</i>
+					<em></em>
+					<b  ng-if="agree"></b>
+					</label>
+					</div>
+
+				</div>
+				<div class="dv">
+					<i>客户姓名 : </i>
+					<input type="text" placeholder="请输入客户姓名" autocomplete="off" id="name"  class="form-control no-border" ng-model=" _custName" value="_custNameo"  required>
+				</div>
+				<div class="dv">
+					<i>手机号 : </i>
+					<input type="text" placeholder="请输入手机号" autocomplete="off" id="inputphone"  class="form-control no-border" ng-model="_phoneNo" value="_phoneNo" ng-blur="phone()" required>
+				</div>
+				<div class="dv">
+					<i>身份证号 : </i>
+					<input type="text" placeholder="请输入身份证号" autocomplete="off" id="cid"  class="form-control no-border" ng-model="_cappId" value="_cappId" ng-blur="ss()" >
+				</div>
+			</div>
+
+			<button class="btn btn-lg  btn-block" ng-click="Create()">下一步</button>
+		</form>
+	<div class="selects">
+			<h3>请选择省市</h3>
+			<div class="info">
+				<form name="myForms" class="form-horizontal" role="form" ng-submit="save(address)">
+					<div class="form-group ">
+						
+						<div class="row checkbox">
+							<div class="col-md-4">
+							
+								<select class="form-control" ng-model="optionsName" ng-options=" value[0]  for value in sheng" ng-change="shengbranname(optionsName,data)">
+									<option value="">省</option>
+								</select>
+							</div>
+							<div class="col-md-4 ">
+								<select class="form-control" ng-model="address" ng-options="value[0] for value in ites " ng-change="shiname(address,data)" >
+									<option value="">市</option>
+								</select>
+							</div>
+							<div class="col-md-4">
+								<select class="form-control" ng-model="district" ng-options="value[0] for value in ites_2"  ng-change="xianqu(district,data)"required>
+									<option value="">区</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</form>
+
+			</div>
+			<div class="tn">
+				<botton class="btn btn-default" ng-click="close()">取消</botton>
+				<botton class=" btn btn-primary " ng-click="sure()">确定</botton>
+			</div>
+
+		</div>
+		</div>
+	<div class="flogbox">
+	<div id="flog">
+		<div class="titles">点点云服</div>
+	<div>
+		<em class="texta">
+			车辆信息不全
+		</em>
+	</div>
+	<p ng-click="sures()">确定</p>
+	</div>
+</div>
+</div>

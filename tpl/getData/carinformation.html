@@ -1,0 +1,131 @@
+<div class="header" >
+	<div class="headerbox clearfix">
+		<div class=" clearfix">
+			<em><img src="./img/logo.png"/></em>
+			<i>点点云服</i>
+		</div>
+
+		<div>
+
+		</div>
+		<div class=" userph clearfix">
+			<div ng-model="fistPhoto">
+				<img ng-src="{{fistPhoto}}" err-src="" />
+			</div>
+			<div ng-model="firstName">{{firstName}}</div>
+
+			<div ng-click="singout()">
+				<a href="./index.html"><img src="./img/tuichu1.png" /></a>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+<div class="borderline"></div>
+<div class="car-box" ng-controller="basic_car">
+	<h2>填写详细信息</h2>
+	<div class="car-cont  ">
+		<h3>车辆信息</h3>
+		<form name="carform" class="form-validation cont-right " ng-model="_carId">
+			<div class="checkbox m-b-md m-t-none" ng-click="completion()">
+				<p><a>一键补全车辆信息</a></p>
+			</div>
+			<div class="boss" ng-model="_customerId">
+
+				<div class="dv">
+					<i>车牌号: </i>
+					<input type="text" placeholder="请输入车牌号" id="" class="form-control no-border" ng-model="_licenseNo" value="{{_licenseNo}}"  >
+				</div>
+				<div class="dv">
+					<i>发动机号 : </i>
+					<input type="text" placeholder="请输入发动机号" id=""  class="form-control no-border" ng-model="_engineNo" ng-blur="cfaz()" value="_engineNo"  >
+				</div>
+
+				<div class="dv">
+					<i>车架号 : </i>
+					<input type="text" placeholder="请输入车架号" id=""  class="form-control no-border" ng-model="_frameNo"  value="_frameNo" >
+				</div>
+				<div class="dv">
+					<i ng-model="_modelCode" >品牌型号 : </i>
+					<input type="text" placeholder="请输入品牌型号" id=""  class="form-control no-border" ng-model="_modelName" ng-focus="carinfs()"   value="_modelName" >
+					<em class="modelName" ng-click="so_modelName()"></em>
+					<div  class="list_ModelN" ng-hide="list_ModelN_show">
+							<p style="background: #f4f4f4; color:#06b5ff ;text-align: right;padding-right:10px; height:40px;line-height: 40px; cursor: pointer;" ng-click="colosul()" >关闭</p>
+						<ul >
+							<li  ng-repeat="site in ModelName" ng-click="ModelName_m(site,data)">{{site.standardName}}  &nbsp;&nbsp;{{site.familyName}} &nbsp;{{site.remark }} &nbsp;{{site.engineDesc }}</li>
+						
+						</ul>
+						<p class="modename_q"><i ng-click="modename_up()">上一页</i><i ng-click="modename_dowen()">下一页</i></p>
+					</div>
+					
+				</div>
+				<div class="dv">
+					<i>注册时间 : </i>
+					<input class="datainp form-control no-border" id="datebut1" type="text" placeholder="请选择日期" value="{{_registerDate| date:'yyyy-MM-dd'}}" ng-model="_registerDate">
+					<button ng-click= "regDate()" id="" class="iconfont icon-rili datestar"></button>
+				</div>
+				<div class="rad ">
+					<i>过户车 : </i>
+					<label>
+						<input type="radio"  value="true" ng-model="yes"  name="yes" id="y" ng-change="sds()" /><em ng-model="yes">是</em>
+						<em></em>
+					
+					</label>
+					<label>
+						<input type="radio"   name="yes" id="n" value="false"  ng-model="yes" ng-change="sds2()"  /><em ng-model="yes">否</em>
+					<!--<em> {{yes | json}}</em>-->
+					
+					</label>
+					<label class="i-checks checks_2">
+            		  <input  class="chec" type="checkbox" ng-model="agree_sa2" ng-change="checks_true()" ng-init="agree_sa2 = false" >
+					<em></em>
+					<b  ng-if="agree_sa2"></b>
+					
+					</label>
+					<label class="i-checks">
+            		  <input  class="chec" type="checkbox" ng-model="agree_sa" ng-change="checks_false()" ng-init="agree_sa = false" >
+					<em></em>
+					<b  ng-if="agree_sa"></b>
+					
+					</label>
+				</div>
+				<div class="dv">
+					<i>过户时间 : </i>
+					<input class="datainp form-control no-border" id="datebut2" type="text" placeholder="请选择日期" value="{{_specialCarDate| date:'yyyy-MM-dd'}}" ng-model="_specialCarDate">
+					<button ng-click= "speDate()" id="datebut2a" class="iconfont icon-rili datestar"></button>
+				</div>
+			</div>
+				<button class="btn btn-lg  btn-block" ng-click="upcarInfo()">保存</button>
+		</form>
+			<div  class="cont-left">
+			<div class="le-cont" ng-click="phone_tag()">
+				<img src="./img/phone.png"/>
+			
+			</div >
+			<ul ng-hide="phone_show">
+				<li>订单号：<em></em></li>
+				<li>客户姓名：<em></em></li>
+				<li>车牌号：</li>
+				
+				<li>手机号：<input type="tel" ng-model="number" placeholder="123456788" vlue="112345678"/></li>
+				<li>电话号：<em></em></li>
+				<li>结束码：</li>
+				<li><button class="active">拨打</button><button>挂断</button></li>
+			</ul>
+			
+		</div>
+	
+	</div>
+	<div class="flogbox">
+	<div id="flog">
+		<div class="titles">点点云服</div>
+	<div>
+		<em class="texta">
+			车辆信息不全
+		</em>
+	</div>
+	<p ng-click="sures()">确定</p>
+	</div>
+</div>
+</div>

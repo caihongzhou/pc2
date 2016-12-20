@@ -1,0 +1,195 @@
+<div class="header" >
+	<div class="headerbox clearfix">
+		<div class=" clearfix">
+			<em><img src="./img/logo.png"/></em>
+			<i>点点云服</i>
+		</div>
+
+		<div>
+
+		</div>
+		<div class=" userph clearfix">
+			<div ng-model="fistPhoto">
+				<img ng-src="{{fistPhoto}}" err-src="" />
+			</div>
+			<div ng-model="firstName">{{firstName}}</div>
+
+			<div ng-click="singout()">
+				<a href="./index.html"><img src="./img/tuichu1.png" /></a>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+<div class="borderline"></div>
+<div class="car-box" ng-controller="comparison_2">
+	<h2>填写详细信息</h2>
+	<div class="car-cont  ">
+		<h3>比价信息</h3>
+		<div class="cont-right2 shous" ng-repeat="a in listd">
+			<div class="cons clearfix" ng-init="findC">
+				<div ng-repeat="ssa in findC | filter:a[0].insureComCode ">
+
+					<img src="{{intUrl}}{{ssa.companyPhotoUrl}}" alt="" />
+					<p style="text-align: center;">{{ssa.companyName}}</p>
+					<p style="text-align: center; color: #ff704f; padding-top:.1rem;">{{a[0].msg}}</p>
+				</div>
+				<table border="1" cellspacing="" cellpadding=""  class="blodes">
+					<tr ng-model="_orderId">
+						<td rowspan="2">车辆信息</td>
+						<td colspan="2"><em ng-model="_licenseNo">{{_licenseNo}}</em> <em ng-model="_modelName ">{{_modelName }}</em> <em ng-model="_frameNo ">{{_frameNo }}</em></td>
+
+					</tr>
+					<tr>
+						<td>起保日期 商业险 <em ng-model="_biStartDate">{{_biStartDate}}</em> 交强险 <em ng-model="_ciStartDate">{{_ciStartDate}}</em></td>
+					</tr>
+					<tr class="sv">
+						<td colspan="3" class="conta clearfix" >
+
+							<div ng-model="_channelCode">{{a[0].channelCode}}</div>
+							<div>
+								保费
+							</div>
+							<div>
+								<p>总保费：<em ng-model="_totalPremium">{{a[0].totalPremium|currency: "¥"}}</em></p>
+								<p>交强险：<em ng-model="_ciPremium">{{a[0].ciPremium|currency: "¥"}}</em></p>
+								<p>商业险：<em ng-model="_biPremium">{{a[0].biPremium|currency: "¥"}}</em></p>
+							</div>
+							<div>
+								<div>
+									<p>投保积分：<em neg-model="_Credit">{{a[0].credit}}</em></p>
+								</div>
+
+								<div>
+									<p>奖励积分：</p>
+
+									<p ng-repeat="ste in a[0].dealCredit " ng-init="outindex=$index">
+
+										<em ng-repeat="b in ste track by $index" ng-init="innerindex=$index"><i>{{b}}</i><i></i></em>
+									</p>
+
+								</div>
+							</div>
+
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3" style="cursor: pointer; color:#7aceff;font-size:.14rem" ng-click="tdif()">点击查看报价明细</td>
+					</tr>
+					<tr ng-hide="td_show" ng-int="a[0].kindList">
+						<td colspan="3" class="bne">
+							<div><em>险别</em><em>保额(元)</em><em>保费(元)</em></div>
+							<div ng-repeat="cod in a[0].kindList  "><em>{{cod.kindCode|codelfilter}} </em><em>{{cod.amount.split(".")[0]|amountfilter}}</em><em>{{cod.premium|currency: "¥"}}</em></div>
+						</td>
+					</tr>
+
+				</table>
+
+			</div>
+			<div>
+				<button class="btn btn-lg  btn-block" style="width:3rem; background:#ff704f; color:#fff;height:.4rem;margin:.25rem auto;" ng-click="toubao(a,data)">立即投保</button>
+			</div>
+		</div>
+		<div class="cont-right2 shoua">
+			<div class="cons clearfix" ng-init="findC">
+				
+				<table border="1" cellspacing="" cellpadding="" class="blodes" >
+					<tr ng-model="_orderId">
+						<td rowspan="2">车辆信息</td>
+						<td colspan="2"><em ng-model="_licenseNo">{{_licenseNo}}</em> <em ng-model="_modelName ">{{_modelName }}</em> <em ng-model="_frameNo ">{{_frameNo }}</em></td>
+
+					</tr>
+				</table>	
+				<div id="repeats"  ng-repeat="ssa in grame">
+					<div ng-repeat="ssq in findC | filter:ssa.companyCode " class="scb">
+
+						<img src="{{intUrl}}{{ssq.companyPhotoUrl}}" alt="" />
+						<p style="text-align: center;">{{ssq.companyName}}</p>
+					</div>
+					<table border="1" cellspacing="" cellpadding="" class="blide" >
+					
+					<tr>
+						<td>起保日期 商业险 <em ng-model="_biStartDate">{{_biStartDate}}</em> 交强险 <em ng-model="_ciStartDate">{{_ciStartDate}}</em></td>
+					</tr>
+					<tr class="sv" ng-repeat="b in ssa.channel">
+						<td colspan="3" class="conta clearfix" >
+
+							<div ng-model="_channelCode">{{b.channelCode}}</div>
+							<div>
+								保费
+							</div>
+							<div>
+								<p>总保费：<em ng-model="_totalPremium">{{_totalPremium|currency: "¥"}}</em></p>
+								<p>交强险：<em ng-model="_ciPremium">{{_ciPremium|currency: "¥"}}</em></p>
+								<p>商业险：<em ng-model="_biPremium">{{_biPremium|currency: "¥"}}</em></p>
+							</div>
+							<div>
+								<div>
+									<p>投保积分：<em neg-model="_Credit">{{_credit}}</em></p>
+								</div>
+
+								<div>
+									<p>奖励积分:</p>
+
+									<p ng-repeat="ste in _dealCredit " ng-init="outindex=$index">
+
+										<em ng-repeat="b in ste track by $index" ng-init="innerindex=$index"><i>{{b}}</i><i></i></em>
+									</p>
+
+								</div>
+							</div>
+
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3" style="cursor: pointer; color:#7aceff;font-size:.14rem" ng-click="tdif()">点击查看报价明细</td>
+					</tr>
+					<tr ng-hide="td_show" ng-int="ms" >
+						<td colspan="3" class="bne">
+							<div><em>险别</em><em>保额(元)</em><em>保费(元)</em></div>
+							<div ng-repeat="cod in ms  "><em>{{cod.kindCode|codelfilter}} </em><em>{{cod.amount|amountfilter}}</em><em>{{cod.premium|currency: "¥"}}</em></div>
+						</td>
+					</tr>
+
+				</table>
+					<div >
+						<button class="btn btn-lg  btn-block" ng-click="toubao(ssa,data)" style="width:3rem; background:#ff704f; color:#fff;height:.4rem;margin:.4rem auto;" >立即投保</button>
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+	
+		<div class="cont-left">
+			<div class="le-cont" ng-click="phone_tag()">
+				<img src="./img/phone.png" />
+
+			</div>
+			<ul ng-hide="phone_show">
+				<li>订单号：<em></em></li>
+				<li>客户姓名：<em></em></li>
+				<li>车牌号：</li>
+
+				<li>手机号：<input type="tel" ng-model="number" placeholder="123456788" vlue="112345678" /></li>
+				<li>电话号：<em></em></li>
+				<li>结束码：</li>
+				<li><button class="active">拨打</button><button>挂断</button></li>
+			</ul>
+
+		</div>
+
+	</div>
+	<div class="flogbox">
+	<div id="flog">
+		<div class="titles">点点云服</div>
+	<div>
+		<em class="texta">
+			车辆信息不全
+		</em>
+	</div>
+	<p ng-click="sures()">确定</p>
+	</div>
+</div>
+</div>

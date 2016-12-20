@@ -1,0 +1,1455 @@
+.getdata_cont {
+  width: 1000px;
+  margin: 0 auto;
+  padding-top: 0.2rem;
+}
+.getdata_cont .main {
+  border-top: 1px solid #06b5ff;
+}
+.getdata_cont table {
+  border-color: #ccc;
+  border: none;
+}
+.getdata_cont table tr {
+  border: 1px solid #ccc;
+}
+.getdata_cont table th {
+  background: #eee;
+  height: 1.17rem;
+  font-size: 0.16rem;
+  font-weight: normal;
+  text-align: center;
+  color: #222;
+  border: 1px solid #ccc;
+}
+.getdata_cont table td {
+  text-align: center;
+  border-color: #ccc;
+  color: #474747;
+  border: 1px solid #ccc;
+  padding: 0.15rem 0;
+}
+.getdata_cont table td:nth-child(14) a {
+  color: #ff704f;
+  cursor: pointer;
+}
+.getdata_cont table th:nth-child(1),
+.getdata_cont table td:nth-child(1),
+.getdata_cont table th:nth-child(3),
+.getdata_cont table td:nth-child(3),
+.getdata_cont table th:nth-child(4),
+.getdata_cont table td:nth-child(4),
+.getdata_cont table th:nth-child(10),
+.getdata_cont table td:nth-child(10),
+.getdata_cont table th:nth-child(14),
+.getdata_cont table td:nth-child(14) {
+  width: 0.32rem;
+  padding: 0 0.03rem;
+}
+.getdata_cont table th:nth-child(2),
+.getdata_cont table td:nth-child(2) {
+  width: 1.0rem;
+}
+.getdata_cont table th:nth-child(5),
+.getdata_cont table td:nth-child(5),
+.getdata_cont table th:nth-child(9),
+.getdata_cont table td:nth-child(9) {
+  width: 0.90rem;
+}
+.getdata_cont table th:nth-child(6),
+.getdata_cont table td:nth-child(6) {
+  width: 0.80rem;
+}
+.getdata_cont table th:nth-child(7),
+.getdata_cont table td:nth-child(7) {
+  width: 1.9rem;
+}
+.getdata_cont table th:nth-child(8),
+.getdata_cont table td:nth-child(8) {
+  width: 1.1rem;
+}
+.getdata_cont table th:nth-child(11),
+.getdata_cont table td:nth-child(11) {
+  width: 0.78rem;
+  padding: 0 0.15rem;
+}
+.getdata_cont table th:nth-child(12),
+.getdata_cont table td:nth-child(12) {
+  width: 0.55rem;
+  padding: 0 0.1rem;
+}
+.getdata_cont table th:nth-child(13),
+.getdata_cont table td:nth-child(13) {
+  width: 0.54rem;
+}
+.basic-box {
+  width: 1000px;
+  margin: 0 auto;
+  line-height: 0.3rem;
+  font-size: 0.2rem;
+  position: relative;
+}
+.basic-box h2 {
+  font-size: 0.22rem;
+  color: #7a7a7a;
+  line-height: 0.5rem;
+}
+.basic-box .basic-cont {
+  width: 100%;
+  border: 1px solid #cccccc;
+  padding: 0.2rem;
+}
+.basic-box .basic-cont h3 {
+  line-height: 0.3rem;
+  font-size: 0.2rem;
+  position: relative;
+}
+.basic-box .basic-cont h3::after {
+  content: "";
+  width: 4px;
+  height: 0.2rem;
+  background: #06b5ff;
+  position: absolute;
+  top: 0.05rem;
+  left: -0.1rem;
+}
+.basic-box .basic-cont .cont-right {
+  width: 5rem;
+  height: 100%;
+  padding-top: 5%;
+  box-sizing: border-box;
+}
+.basic-box .basic-cont .cont-right .btn {
+  background: #ff704f;
+  width: 3.0rem;
+  margin: 0.20rem 1rem 0 1.2rem;
+  color: #fff;
+}
+.basic-box .basic-cont .cont-right .login-title {
+  padding: 6% 0;
+  font-size: 0.2rem;
+  color: #06b5ff;
+  border-bottom: 1px solid #ccc;
+}
+.basic-box .basic-cont .cont-right .list-group-item {
+  padding: 0 7% 7.2%;
+}
+.basic-box .basic-cont .cont-right .dv {
+  margin-top: .2rem;
+  margin-bottom: .2rem;
+}
+.basic-box .basic-cont .cont-right i {
+  display: inline-block;
+  width: 1.16rem;
+  text-align: right;
+  font-size: 0.16rem;
+}
+.basic-box .basic-cont .cont-right input {
+  height: 0.38rem;
+  font-size: 0.16rem;
+  line-height: 1;
+  padding: 3%;
+  width: 3.0rem;
+  display: inline-block;
+}
+.basic-box .basic-cont .cont-right input.chec {
+  height: 0.2rem;
+  line-height: 0.2rem;
+  margin-top: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 1;
+  display: none;
+}
+.basic-box .basic-cont .cont-right .abs {
+  position: relative;
+}
+.basic-box .basic-cont .cont-right .abs input {
+  width: 2.22rem;
+}
+.basic-box .basic-cont .cont-right .abs .checkbox {
+  position: absolute;
+  top: 0.2rem;
+  right: 1.36rem;
+}
+.basic-box .basic-cont .cont-right .i-checks {
+  position: absolute;
+  width: 100%;
+  line-height: 0.18rem;
+  top: -.18rem;
+}
+.basic-box .basic-cont .cont-right .i-checks i {
+  font-size: 0.14rem;
+  width: 0.5rem;
+  text-align: left;
+}
+.basic-box .basic-cont .cont-right .i-checks em,
+.basic-box .basic-cont .cont-right .i-checks b {
+  position: absolute;
+  width: 0.15rem;
+  height: 0.15rem;
+  background: #fff;
+  border: 1px solid #ccc;
+  left: 0;
+  top: 2px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+.basic-box .basic-cont .cont-right .i-checks b {
+  border: 0;
+  background: url("../../img/radiuture.png");
+}
+.basic-box .basic-cont .cont-right .reg {
+  padding: 3.8% 0;
+}
+.basic-box .basic-cont .cont-right .reg a {
+  color: #999999;
+}
+.basic-box .selects {
+  width: 410px;
+  background: #fff;
+  padding: 0.5rem 0 0 0.2rem;
+  position: absolute;
+  border: 1px solid #ccc;
+  top: 25%;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+  -moz-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  -o-transform: translate(-50%);
+  transform: translate(-50%);
+  display: none;
+}
+.basic-box .selects .info {
+  margin: 0 auto;
+  padding-bottom: 0.2rem;
+}
+.basic-box .selects .info .checkbox {
+  width: 100%;
+}
+.basic-box .selects .tn {
+  padding: 0.1rem 0.2rem;
+}
+.basic-box .selects .tn .btn-primary {
+  float: right;
+}
+.applicant-box {
+  width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+.applicant-box h2 {
+  font-size: 0.22rem;
+  color: #7a7a7a;
+  line-height: 0.5rem;
+}
+.applicant-box .applicant-cont {
+  width: 100%;
+  border: 1px solid #cccccc;
+  padding: 0.3rem;
+}
+.applicant-box .applicant-cont h3 {
+  line-height: 0.3rem;
+  font-size: 0.2rem;
+  position: relative;
+}
+.applicant-box .applicant-cont h3::after {
+  content: "";
+  width: 4px;
+  height: 0.2rem;
+  background: #06b5ff;
+  position: absolute;
+  top: 0.05rem;
+  left: -0.1rem;
+}
+.applicant-box .applicant-cont h3:nth-child(3) {
+  padding-top: 0.1rem;
+}
+.applicant-box .applicant-cont h3:nth-child(3)::after {
+  top: 0.15rem;
+}
+.applicant-box .applicant-cont h3:nth-child(5) {
+  padding-top: 0.1rem;
+}
+.applicant-box .applicant-cont h3:nth-child(5)::after {
+  top: 0.15rem;
+}
+.applicant-box .cont-right {
+  width: 5rem;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+.applicant-box .cont-right .checkbox {
+  position: absolute;
+  top: -0.3rem;
+  right: 1.36rem;
+}
+.applicant-box .cont-right .i-checks {
+  position: absolute;
+  width: 100%;
+}
+.applicant-box .cont-right .i-checks i {
+  font-size: 0.14rem;
+  line-height: 0.16rem;
+  width: 0.5rem;
+  text-align: left;
+}
+.applicant-box .cont-right .i-checks em,
+.applicant-box .cont-right .i-checks b {
+  position: absolute;
+  width: 0.15rem;
+  height: 0.15rem;
+  background: #fff;
+  border: 1px solid #ccc;
+  left: 0;
+  top: 2px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+.applicant-box .cont-right .i-checks b {
+  border: 0;
+  background: url("../../img/radiuture.png");
+}
+.applicant-box .cont-right .btn {
+  background: #ff704f;
+  width: 3.0rem;
+  margin: 0.20rem 1rem 0 1.3rem;
+  color: #fff;
+}
+.applicant-box .cont-right .login-title {
+  padding: 6% 0;
+  font-size: 0.2rem;
+  color: #06b5ff;
+  border-bottom: 1px solid #ccc;
+}
+.applicant-box .cont-right .list-group-item {
+  padding: 0 7% 7.2%;
+}
+.applicant-box .cont-right i {
+  display: inline-block;
+  width: 1.3rem;
+  text-align: right;
+  font-size: 0.16rem;
+  line-height: 0.4rem;
+}
+.applicant-box .cont-right input {
+  height: 0.38rem;
+  font-size: 0.16rem;
+  line-height: 1;
+  padding: 3%;
+  width: 3.0rem;
+  display: inline-block;
+}
+.applicant-box .cont-right input.chec {
+  height: 0.2rem;
+  line-height: 0.2rem;
+  margin-top: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 1;
+  display: none;
+}
+.applicant-box .cont-right .abs {
+  position: relative;
+}
+.applicant-box .cont-right .abs input {
+  width: 2.22rem;
+}
+.applicant-box .cont-right .abs .checkbox {
+  position: absolute;
+  top: 0.2rem;
+  right: 1.36rem;
+}
+.applicant-box .cont-right .dv {
+  margin-top: .2rem;
+}
+.applicant-box .cont-right .i-checks {
+  position: absolute;
+  width: 100%;
+  top: -.18rem;
+}
+.applicant-box .cont-right .i-checks i {
+  font-size: 0.14rem;
+  line-height: 0.16rem;
+  width: 0.5rem;
+  text-align: left;
+}
+.applicant-box .cont-right .i-checks em,
+.applicant-box .cont-right .i-checks b {
+  position: absolute;
+  width: 0.15rem;
+  height: 0.15rem;
+  background: #fff;
+  border: 1px solid #ccc;
+  left: 0;
+  top: 2px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+.applicant-box .cont-right .i-checks b {
+  border: 0;
+  background: url("../../img/radiuture.png");
+}
+.applicant-box .cont-right .reg {
+  padding: 3.8% 0;
+}
+.applicant-box .cont-right .reg a {
+  color: #999999;
+}
+.applicant-box .selects {
+  width: 410px;
+  background: #fff;
+  padding: 0.5rem 0 0 0.2rem;
+  position: absolute;
+  border: 1px solid #ccc;
+  top: 58%;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+  -moz-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  -o-transform: translate(-50%);
+  transform: translate(-50%);
+  display: none;
+}
+.applicant-box .selects .info {
+  margin: 0 auto;
+  padding-bottom: 0.2rem;
+}
+.applicant-box .selects .info .checkbox {
+  width: 100%;
+}
+.applicant-box .selects .tn {
+  padding: 0.1rem 0.2rem;
+}
+.applicant-box .selects .tn .btn-primary {
+  float: right;
+}
+.car-box {
+  width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+.car-box h2 {
+  font-size: 0.22rem;
+  color: #7a7a7a;
+  line-height: 0.5rem;
+}
+.car-box .car-cont {
+  width: 100%;
+  border: 1px solid #cccccc;
+  padding: 0.3rem;
+}
+.car-box .car-cont h3 {
+  line-height: 0.3rem;
+  font-size: 0.2rem;
+  position: relative;
+}
+.car-box .car-cont h3::after {
+  content: "";
+  width: 4px;
+  height: 0.2rem;
+  background: #06b5ff;
+  position: absolute;
+  top: 0.05rem;
+  left: -0.1rem;
+}
+.car-box .cont-right {
+  width: 5rem;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+.car-box .cont-right .modelName {
+  position: absolute;
+  right: 0.14rem;
+  top: 0.04rem;
+  background: url("../../img/soso.png");
+  background-size: 100% 100%;
+  border-radius: 0.2rem;
+  line-height: 0.24rem;
+  width: 0.3rem;
+  height: 0.3rem;
+  cursor: pointer;
+  color: #ff9b88;
+}
+.car-box .cont-right .list_ModelN {
+  width: 3.6rem;
+  margin-left: 1.35rem;
+  border: 1px solid #ccc;
+}
+.car-box .cont-right .list_ModelN li {
+  padding: 0 0.1rem;
+  border-bottom: 1px solid #ccc;
+  line-height: 0.4rem;
+  cursor: pointer;
+}
+.car-box .cont-right .checkbox {
+  position: absolute;
+  top: -0.56rem;
+  right: 0.65rem;
+  border-radius: 0.05rem;
+  color: #FFf;
+  cursor: pointer;
+}
+.car-box .cont-right .checkbox a {
+  background: #ff704f;
+  display: block;
+  line-height: 0.24rem;
+  padding: 0 0.1rem;
+  color: #FFf;
+  border-radius: 0.05rem;
+}
+.car-box .cont-right .checkbox a:active {
+  color: #ccc;
+  background: #fcc;
+}
+.car-box .cont-right .dv {
+  margin-top: .2rem;
+}
+.car-box .cont-right .i-checks {
+  position: absolute;
+  width: 100%;
+}
+.car-box .cont-right .i-checks i {
+  font-size: 0.14rem;
+  line-height: 0.16rem;
+  width: 0.5rem;
+  text-align: left;
+}
+.car-box .cont-right .i-checks em,
+.car-box .cont-right .i-checks b {
+  position: absolute;
+  width: 0.15rem;
+  height: 0.15rem;
+  background: #fff;
+  border: 1px solid #ccc;
+  left: 0;
+  top: 2px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+.car-box .cont-right .i-checks b {
+  border: 0;
+  background: url("../../img/radiuture.png");
+}
+.car-box .cont-right .boss > div {
+  position: relative;
+}
+.car-box .cont-right .boss > div button {
+  position: absolute;
+  top: 9px;
+  right: 20px;
+  color: #06b5ff;
+  border: none;
+  background: #fff;
+}
+.car-box .cont-right .boss > div button:hover {
+  color: #ff704f;
+}
+.car-box .cont-right .boss > div .modename_q {
+  line-height: 0.24rem;
+}
+.car-box .cont-right .boss > div .modename_q i {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 50%;
+  text-align: center;
+  color: #ff9b88;
+}
+.car-box .cont-right .boss > div .modename_q i:hover {
+  color: #f00;
+}
+.car-box .cont-right .boss > div .modename_q i:active {
+  color: #017EBC;
+  background: #ccc;
+}
+.car-box .cont-right .btn {
+  background: #ff704f;
+  width: 3.0rem;
+  margin: 0.20rem 1rem 0 1.3rem;
+  color: #fff;
+}
+.car-box .cont-right .login-title {
+  padding: 6% 0;
+  font-size: 0.2rem;
+  color: #06b5ff;
+  border-bottom: 1px solid #ccc;
+}
+.car-box .cont-right .list-group-item {
+  padding: 0 7% 7.2%;
+}
+.car-box .cont-right i {
+  display: inline-block;
+  width: 1.3rem;
+  text-align: right;
+  font-size: 0.16rem;
+}
+.car-box .cont-right input {
+  height: 0.38rem;
+  font-size: 0.16rem;
+  line-height: 1;
+  padding: 3%;
+  width: 3.60rem;
+  display: inline-block;
+}
+.car-box .cont-right input.chec {
+  height: 0.2rem;
+  line-height: 0.2rem;
+  margin-top: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 1;
+  display: none;
+}
+.car-box .cont-right .rad {
+  padding-top: 0.3rem;
+  position: relative;
+}
+.car-box .cont-right .rad input {
+  height: 0.12rem;
+  width: 0.2rem;
+  background: #f00;
+  padding-top: 0.05rem;
+}
+.car-box .cont-right .rad label {
+  position: relative;
+}
+.car-box .cont-right .rad .i-checks {
+  position: absolute;
+  left: 1.75rem;
+}
+.car-box .cont-right .rad .checks_2 {
+  left: 1.35rem;
+}
+.car-box .cont-right .rad b {
+  width: 0.13rem;
+  height: 0.13rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url("../../img/radie.png") no-repeat;
+}
+.car-box .cont-right .abs {
+  position: relative;
+}
+.car-box .cont-right .abs input {
+  width: 2.22rem;
+}
+.car-box .cont-right .abs .checkbox {
+  position: absolute;
+  top: 0.2rem;
+  right: 1.36rem;
+}
+.car-box .cont-right .i-checks {
+  position: absolute;
+  width: 100%;
+}
+.car-box .cont-right .i-checks i {
+  font-size: 0.14rem;
+  line-height: 0.16rem;
+  width: 0.5rem;
+  text-align: left;
+}
+.car-box .cont-right .i-checks em,
+.car-box .cont-right .i-checks b {
+  position: absolute;
+  width: 0.15rem;
+  height: 0.15rem;
+  background: #fff;
+  border: 1px solid #ccc;
+  left: 0;
+  top: 4px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+.car-box .cont-right .i-checks b {
+  border: 0;
+  background: url("../../img/radiuture.png");
+}
+.car-box .cont-right .reg {
+  padding: 3.8% 0;
+}
+.car-box .cont-right .reg a {
+  color: #999999;
+}
+.car-box .selects {
+  width: 410px;
+  background: #fff;
+  padding: 0.5rem 0 0 0.2rem;
+  position: absolute;
+  border: 1px solid #ccc;
+  top: 58%;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+  -moz-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  -o-transform: translate(-50%);
+  transform: translate(-50%);
+  display: none;
+}
+.car-box .selects .info {
+  margin: 0 auto;
+  padding-bottom: 0.2rem;
+}
+.car-box .selects .info .checkbox {
+  width: 100%;
+}
+.car-box .selects .tn {
+  padding: 0.1rem 0.2rem;
+}
+.car-box .selects .tn .btn-primary {
+  float: right;
+}
+.Ins-box {
+  width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+.Ins-box h2 {
+  font-size: 0.22rem;
+  color: #7a7a7a;
+  line-height: 0.5rem;
+}
+.Ins-box .Ins-cont {
+  width: 100%;
+  border: 1px solid #cccccc;
+  padding: 0.3rem;
+}
+.Ins-box .Ins-cont h3 {
+  line-height: 0.3rem;
+  font-size: 0.2rem;
+  position: relative;
+}
+.Ins-box .Ins-cont h3::after {
+  content: "";
+  width: 4px;
+  height: 0.2rem;
+  background: #06b5ff;
+  position: absolute;
+  top: 0.05rem;
+  left: -0.1rem;
+}
+.Ins-box .cont-right {
+  width: 7rem;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+.Ins-box .cont-right .checkbox {
+  position: absolute;
+  top: -0.3rem;
+  right: 0.65rem;
+  border-radius: 0.05rem;
+  color: #FFf;
+  cursor: pointer;
+}
+.Ins-box .cont-right .checkbox a {
+  background: #ff704f;
+  display: block;
+  line-height: 0.24rem;
+  padding: 0 0.1rem;
+  color: #FFf;
+  border-radius: 0.05rem;
+}
+.Ins-box .cont-right .checkbox a:active {
+  color: #ccc;
+  background: #fcc;
+}
+.Ins-box .cont-right .checkbox a:hover {
+  color: #FF704F;
+  background: #F2DEDE;
+}
+.Ins-box .cont-right .btn {
+  background: #ff704f;
+  width: 3.0rem;
+  margin: 0.20rem auto 1.3rem 2.4rem;
+  color: #fff;
+}
+.Ins-box .cont-right .login-title {
+  padding: 6% 0;
+  font-size: 0.2rem;
+  color: #06b5ff;
+  border-bottom: 1px solid #ccc;
+}
+.Ins-box .cont-right .list-group-item {
+  padding: 0 7% 7.2%;
+}
+.Ins-box .cont-right > div {
+  margin-top: 0.2rem;
+}
+.Ins-box .cont-right i {
+  display: inline-block;
+  width: 1.3rem;
+  text-align: right;
+  font-size: 0.16rem;
+  line-height: 0.4rem;
+}
+.Ins-box .cont-right input {
+  height: 0.38rem;
+  font-size: 0.16rem;
+  line-height: 1;
+  padding: 3%;
+  width: 5.0rem;
+  display: inline-block;
+}
+.Ins-box .cont-right input.chec {
+  width: 0.4rem;
+  height: 0.2rem;
+  line-height: 0.2rem;
+  margin-top: 0;
+  position: absolute;
+  top: -.15rem;
+  left: -.13rem;
+  z-index: 1;
+  opacity: 1;
+  display: none;
+}
+.Ins-box .cont-right .trues {
+  position: relative;
+  margin-bottom: 0.2rem;
+}
+.Ins-box .cont-right .trues input {
+  text-indent: 0.1rem;
+}
+.Ins-box .cont-right .trues .i-checks {
+  position: absolute;
+  width: 0.45rem;
+  top: 0.26rem;
+  left: 1.4rem;
+  height: 0.2rem;
+}
+.Ins-box .cont-right .trues .i-checks em,
+.Ins-box .cont-right .trues .i-checks b {
+  position: absolute;
+  width: 0.15rem;
+  height: 0.15rem;
+  background: #fff;
+  border: 1px solid #ccc;
+  top: -14px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.Ins-box .cont-right .trues .i-checks em.bb,
+.Ins-box .cont-right .trues .i-checks b.bb {
+  left: 0;
+}
+.Ins-box .cont-right .trues .i-checks b {
+  border: 0;
+  background: url("../../img/radiuture.png");
+}
+.Ins-box .cont-right .long input {
+  width: 5rem;
+}
+.Ins-box .cont-right .datas {
+  position: relative;
+}
+.Ins-box .cont-right .datas input {
+  width: 1.4rem;
+}
+.Ins-box .cont-right .datas .iconfont {
+  position: absolute;
+  right: 2rem;
+  top: 0.12rem;
+  font-size: 0.18rem;
+}
+.Ins-box .cont-right .datas .datestar {
+  position: absolute;
+  right: 4.3rem;
+  top: 0.12rem;
+  font-size: 0.18rem;
+  color: #aaaaaa;
+  cursor: pointer;
+}
+.Ins-box .cont-right .datas .dateend {
+  position: absolute;
+  right: 2.7rem;
+  top: 0.12rem;
+  font-size: 0.18rem;
+  color: #aaaaaa;
+  cursor: pointer;
+}
+.Ins-box .cont-right .datas a:hover {
+  color: #fd0909;
+}
+.Ins-box .cont-right .rad {
+  padding-top: 0.3rem;
+  position: relative;
+}
+.Ins-box .cont-right .rad input {
+  height: 0.12rem;
+  width: 0.2rem;
+  background: #f00;
+  padding-top: 0.05rem;
+}
+.Ins-box .cont-right .rad label {
+  position: relative;
+}
+.Ins-box .cont-right .rad b {
+  width: 0.13rem;
+  height: 0.13rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url("../../img/radie.png") no-repeat;
+}
+.Ins-box .cont-right .i-franchise {
+  position: absolute;
+  width: 0.7rem;
+  height: 0.4rem;
+  top: 0.1rem;
+  right: 2.1rem;
+  color: #a0a0a0;
+  line-height: 0.2rem;
+}
+.Ins-box .cont-right .i-franchise i {
+  font-size: 0.14rem;
+  line-height: 0.16rem;
+  width: 0.5rem;
+  text-align: left;
+}
+.Ins-box .cont-right .i-franchise em,
+.Ins-box .cont-right .i-franchise b {
+  position: absolute;
+  padding: 0 0.05rem;
+  color: #aaaaaa;
+  background: #fff;
+  border: 1px solid #ccc;
+  left: -.19rem;
+  top: 2px;
+  width: 0.15rem;
+  height: 0.15rem;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  font-size: 0.10rem;
+  cursor: pointer;
+}
+.Ins-box .cont-right .i-franchise b {
+  background: #ff704f;
+  color: #fff;
+  font-weight: normal;
+  border-color: #ff704f;
+  padding: 0 0.07rem;
+  border: 0;
+  background: url("../../img/radiuture.png");
+}
+.Ins-box .cont-right .wos {
+  position: absolute;
+  width: 0.7rem;
+  text-align: right;
+  top: 0.12rem;
+  right: 0.75rem;
+  font-size: 0.12rem;
+  color: #333333;
+  cursor: pointer;
+}
+.Ins-box .cont-right .wos .iconfont {
+  color: #aaa;
+}
+.Ins-box .cont-right .chooses {
+  width: 5rem;
+  margin-left: 1.33rem;
+}
+.Ins-box .cont-right .chooses ul {
+  width: 100%;
+  border: 1px solid #ccc;
+}
+.Ins-box .cont-right .chooses ul li {
+  line-height: 0.32rem;
+  font-size: 0.14rem;
+  text-align: right;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+  height: 0.3rem;
+  padding: 0 0.1rem;
+}
+.Ins-box .cont-right .chooses ul li a {
+  display: block;
+  width: 100%;
+  color: #474747;
+  text-decoration: none;
+}
+.Ins-box .cont-right .chooses ul li a:hover {
+  color: #ff704f;
+}
+.Ins-box .cont-right .reg {
+  padding: 3.8% 0;
+}
+.Ins-box .cont-right .reg a {
+  color: #999999;
+}
+.Ins-box .selects {
+  width: 450px;
+  background: #fff;
+  padding: 0.5rem 0 0 0.2rem;
+  position: absolute;
+  border: 1px solid #ccc;
+  top: 58%;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+  -moz-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  -o-transform: translate(-50%);
+  transform: translate(-50%);
+  display: none;
+}
+.Ins-box .selects .info {
+  margin: 20px auto;
+  padding-bottom: 0.9rem;
+}
+.Ins-box .selects .info .checkbox {
+  width: 100%;
+}
+.Ins-box .selects .tn {
+  padding: 0.1rem 0.2rem;
+}
+.Ins-box .selects .tn .btn-primary {
+  float: right;
+}
+.cont-left {
+  position: absolute;
+  right: 0;
+  top: 100px;
+}
+.cont-left .le-cont {
+  width: 2.3rem;
+  height: 2.3rem;
+  position: relative;
+}
+.cont-left .le-cont img {
+  width: 100%;
+  height: 100%;
+}
+.cont-left ul {
+  width: 2.3rem;
+  background: #eee;
+}
+.cont-left ul li {
+  border-bottom: 1px solid #ccc;
+  line-height: 0.38rem;
+  padding-left: 0.1rem;
+  font-size: 0.16rem;
+}
+.cont-left ul li input {
+  width: 1.4rem;
+  background: transparent;
+  border: 0;
+}
+.cont-left ul li button {
+  width: 50%;
+  height: 100%;
+  background: #ccc;
+  border: 0;
+  line-height: 0.38rem;
+}
+.cont-left ul li button.active {
+  background: #ff704f;
+  color: #fff;
+}
+.cont-left ul li:last-child {
+  padding: 0;
+}
+.detailed .cont-left {
+  width: 1.5rem;
+}
+.detailed .cont-left .le-cont {
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+}
+.detailed .cont-left .le-cont img {
+  width: 100%;
+  height: 100%;
+}
+.detailed .cont-left ul {
+  width: 100%;
+  background: #eee;
+}
+.detailed .cont-left ul li {
+  border-bottom: 1px solid #ccc;
+  line-height: 0.38rem;
+  padding-left: 0.1rem;
+  font-size: 0.16rem;
+}
+.detailed .cont-left ul li input {
+  width: 1.4rem;
+  background: transparent;
+  border: 0;
+}
+.detailed .cont-left ul li button {
+  width: 50%;
+  height: 100%;
+  background: #ccc;
+  border: 0;
+  line-height: 0.38rem;
+}
+.detailed .cont-left ul li button.active {
+  background: #ff704f;
+  color: #fff;
+}
+.detailed .cont-left ul li:last-child {
+  padding: 0;
+}
+.cont-right2 {
+  width: 6.93rem;
+  margin-top: 0.25rem;
+}
+.cont-right2 .cons {
+  position: relative;
+}
+.cont-right2 .cons > div {
+  float: left;
+  width: 0.75rem;
+  height: 0.75rem;
+}
+.cont-right2 .cons > div img {
+  width: 100%;
+}
+.cont-right2 .cons > table {
+  float: right;
+}
+.cont-right2 .cons > div#repeats {
+  width: 100%;
+  height: auto;
+}
+.cont-right2 .cons > div#repeats:nth-child(1) {
+  margin-top: 0.4rem;
+}
+.cont-right2 .cons > div#repeats > div.scb {
+  float: left;
+  width: 0.75rem;
+  height: 0.75rem;
+}
+.cont-right2 .cons > div#repeats > div.scb img {
+  width: 100%;
+}
+.cont-right2 .cons > div#repeats > table {
+  float: right;
+}
+.cont-right2 .scs {
+  margin-left: 0.8rem;
+}
+.cont-right2 table {
+  text-align: center;
+  border-top: 3px solid #06b5ff;
+  width: 6rem;
+  color: #474747;
+  font-size: 0.16rem;
+}
+.cont-right2 table tr {
+  height: 0.38rem;
+  line-height: 0.38rem;
+  border: 1px solid #ccc;
+}
+.cont-right2 table tr:nth-child(1) {
+  background: #eeeeee;
+}
+.cont-right2 table tr:nth-child(1) td:nth-child(1) {
+  width: 0.9rem;
+}
+.cont-right2 table tr:nth-child(2) {
+  background: #eeeeee;
+}
+.cont-right2 table tr.sv {
+  height: auto;
+}
+.cont-right2 table tr.sv td > div {
+  float: left;
+}
+.cont-right2 table tr.sv td > div:nth-child(1) {
+  border: 0;
+  width: .89rem;
+  height: 100%;
+}
+.cont-right2 table tr.sv td > div:nth-child(2) {
+  height: 100%;
+  width: .6rem;
+}
+.cont-right2 table tr.sv td > div:nth-child(3) {
+  height: 100%;
+  width: 2.38rem;
+  border-left: 1px solid #ccc;
+}
+.cont-right2 table tr.sv td > div:nth-child(4) {
+  text-align: left;
+  width: 2.11rem;
+}
+.cont-right2 table tr.sv td > div:nth-child(4) p {
+  border-left: 1px solid #ccc;
+}
+.cont-right2 table tr.sv td > div:nth-child(4) p:nth-child(1),
+.cont-right2 table tr.sv td > div:nth-child(4) p:nth-child(2) {
+  border-left: 0px;
+}
+.cont-right2 table tr.sv td > div p {
+  padding-left: .05rem;
+  border-top: 1px solid #ccc;
+  text-align: left;
+  border-right: 1px solid #ccc;
+}
+.cont-right2 table td {
+  border: 1px solid #ccc;
+  height: 0.38rem;
+}
+.cont-right2 table td.conta {
+  background: #d5ecff;
+  padding: 0;
+}
+.cont-right2 table td.bne em {
+  display: inline-block;
+  width: 1.65rem;
+  border-left: 1px solid #ccc;
+}
+.cont-right2 table td.bne em:nth-child(1) {
+  border: 0;
+  width: 2.5rem;
+}
+.cont-right2 table td.bne > div {
+  border-bottom: 1px solid #ccc;
+}
+.cont-right2 table td.bne > div:last-child {
+  border: 0;
+}
+.cont-right2 table.blodes {
+  text-align: center;
+  border-top: 3px solid #06b5ff;
+  width: 6rem;
+  color: #474747;
+  font-size: 0.16rem;
+}
+.cont-right2 table.blodes tr {
+  height: 0.38rem;
+  line-height: 0.38rem;
+  border: 1px solid #ccc;
+}
+.cont-right2 table.blodes tr:nth-child(1) {
+  background: #eeeeee;
+}
+.cont-right2 table.blodes tr:nth-child(1) td:nth-child(1) {
+  width: 0.9rem;
+}
+.cont-right2 table.blodes tr:nth-child(2) {
+  background: #eeeeee;
+}
+.cont-right2 table.blodes tr.sv {
+  height: auto;
+}
+.cont-right2 table.blodes tr.sv td > div {
+  float: left;
+}
+.cont-right2 table.blodes tr.sv td > div:nth-child(1) {
+  border: 0;
+  width: .89rem;
+  height: 100%;
+}
+.cont-right2 table.blodes tr.sv td > div:nth-child(2) {
+  height: 100%;
+  width: .6rem;
+}
+.cont-right2 table.blodes tr.sv td > div:nth-child(3) {
+  height: 100%;
+  width: 2.38rem;
+  border-left: 1px solid #ccc;
+}
+.cont-right2 table.blodes tr.sv td > div:nth-child(4) {
+  text-align: left;
+  width: 2.11rem;
+}
+.cont-right2 table.blodes tr.sv td > div:nth-child(4) p {
+  border-left: 1px solid #ccc;
+}
+.cont-right2 table.blodes tr.sv td > div:nth-child(4) p:nth-child(1),
+.cont-right2 table.blodes tr.sv td > div:nth-child(4) p:nth-child(2) {
+  border-left: 0px;
+}
+.cont-right2 table.blodes tr.sv td > div p {
+  padding-left: .05rem;
+  border-top: 1px solid #ccc;
+  text-align: left;
+  border-right: 1px solid #ccc;
+}
+.cont-right2 table.blodes td {
+  border: 1px solid #ccc;
+  height: 0.38rem;
+}
+.cont-right2 table.blodes td.conta {
+  background: #d5ecff;
+  padding: 0;
+}
+.cont-right2 table.blodes td.bne em {
+  display: inline-block;
+  width: 1.65rem;
+  border-left: 1px solid #ccc;
+}
+.cont-right2 table.blodes td.bne em:nth-child(1) {
+  border: 0;
+  width: 2.5rem;
+}
+.cont-right2 table.blodes td.bne > div {
+  border-bottom: 1px solid #ccc;
+}
+.cont-right2 table.blodes td.bne > div:last-child {
+  border: 0;
+}
+.cont-right2 table.blide {
+  text-align: center;
+  border: 0;
+  width: 6rem;
+  color: #474747;
+  font-size: 0.16rem;
+}
+.cont-right2 table.blide tr {
+  height: 0.38rem;
+  line-height: 0.38rem;
+  border: 1px solid #ccc;
+}
+.cont-right2 table.blide tr:nth-child(1) {
+  background: #eeeeee;
+  border-top: 0;
+}
+.cont-right2 table.blide tr.sv {
+  height: auto;
+}
+.cont-right2 table.blide tr.sv td > div {
+  float: left;
+}
+.cont-right2 table.blide tr.sv td > div:nth-child(1) {
+  border: 0;
+  width: .89rem;
+  height: 100%;
+}
+.cont-right2 table.blide tr.sv td > div:nth-child(2) {
+  height: 100%;
+  width: .6rem;
+}
+.cont-right2 table.blide tr.sv td > div:nth-child(3) {
+  height: 100%;
+  width: 2.38rem;
+  border-left: 1px solid #ccc;
+}
+.cont-right2 table.blide tr.sv td > div:nth-child(4) {
+  text-align: left;
+  width: 2.11rem;
+}
+.cont-right2 table.blide tr.sv td > div:nth-child(4) p {
+  border-left: 1px solid #ccc;
+}
+.cont-right2 table.blide tr.sv td > div:nth-child(4) p:nth-child(1),
+.cont-right2 table.blide tr.sv td > div:nth-child(4) p:nth-child(2) {
+  border-left: 0px;
+}
+.cont-right2 table.blide tr.sv td > div p {
+  padding-left: .05rem;
+  border-top: 1px solid #ccc;
+  text-align: left;
+  border-right: 1px solid #ccc;
+}
+.cont-right2 table.blide td {
+  border: 1px solid #ccc;
+  height: 0.38rem;
+}
+.cont-right2 table.blide td.conta {
+  background: #d5ecff;
+  padding: 0;
+}
+.cont-right2 table.blide td.bne em {
+  display: inline-block;
+  width: 1.65rem;
+  border-left: 1px solid #ccc;
+}
+.cont-right2 table.blide td.bne em:nth-child(1) {
+  border: 0;
+  width: 2.5rem;
+}
+.cont-right2 table.blide td.bne > div {
+  border-bottom: 1px solid #ccc;
+}
+.cont-right2 table.blide td.bne > div:last-child {
+  border: 0;
+}
+.cont-right2 .btn-color {
+  height: 0.4rem;
+  color: #fff;
+  background: #ff704f;
+  width: 2.9rem;
+  margin-left: 0.05rem;
+  margin-right: 0.05rem;
+  margin-top: 0.2rem;
+}
+.steps {
+  width: 1000px;
+  height: 0.98rem;
+  position: relative;
+  margin: 0 auto;
+}
+.steps .borderss {
+  position: absolute;
+  top: 0.37rem;
+  width: 100%;
+  height: 0.04rem;
+  background: #aaa;
+}
+.steps .borcont {
+  position: absolute;
+  top: 0.37rem;
+  width: 100%;
+}
+.steps .borcont > div {
+  float: left;
+  width: 2rem;
+  position: relative;
+}
+.steps .borcont > div p {
+  width: 100%;
+  height: 0.04rem;
+}
+.steps .borcont > div em {
+  display: block;
+  width: 100%;
+  font-size: 0.15rem;
+  line-height: 0.4rem;
+  text-align: center;
+}
+.steps .borcont > div i {
+  position: absolute;
+  top: -.1rem;
+  left: 50%;
+  -webkit-transform: translate(-50%) -moz-transform:translate(-50%);
+  -ms-transform: translate(-50%);
+  -o-transform: translate(-50%);
+  transform: translate(-50%);
+  height: 0.2rem;
+  width: 0.2rem;
+  line-height: 0.2rem;
+  text-align: center;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  color: #fff;
+  background: #aaa;
+}
+.steps .borcont > div.active p {
+  background: #ff704f;
+}
+.steps .borcont > div.active em {
+  color: #ff704f;
+}
+.steps .borcont > div.active i {
+  background: #ff704f;
+}
+/*# sourceMappingURL=getData.css.map */

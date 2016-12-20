@@ -1,0 +1,82 @@
+<div class="header">
+	<div class="headerbox clearfix">
+		<div class=" clearfix">
+			<em><img src="./img/logo.png"/></em>
+			<i>点点云服</i>
+		</div>
+
+		<div>
+			<div class=" clearfix">
+				<div class="col-md-12 column">
+					<ul class="nav nav-tabs">
+						<li class="active">
+							<a href="./getData.html">获取数据</a>
+						</li>
+						<li ng-click="remove()">
+							<a href="./outSingle.html">我要出单</a>
+						</li>
+						<li class="">
+							<a href="./MyOrder.html">我的订单</a>
+						</li>
+
+					</ul>
+				</div>
+
+			</div>
+
+		</div>
+		<div class=" userph clearfix">
+			<div ng-model="fistPhoto">
+				<img ng-src="{{fistPhoto}}" err-src="" />
+			</div>
+			<div ng-model="firstName">{{firstName}}</div>
+
+			<div ng-click="singout()">
+				<a href="./index.html"><img src="./img/tuichu1.png" /></a>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+<div class="borderline"></div>
+<div class="getdata_cont">
+	<div class="main" ng-controller="getss">
+		<table border="1" cellspacing="" cellpadding="">
+			<tr>
+				<th>客户姓名</th>
+				<th>手机号码</th>
+				<th>投保城市</th>
+				<th>数据来源</th>
+				<th>创建时间</th>
+				<th>车牌号</th>
+				<th>车架号</th>
+				<th>品牌型号</th>
+				<th>注册日期</th>
+				<th>保险公司</th>
+				<th>商业保费</th>
+				<th>交强保费</th>
+				<th>车船税</th>
+				<th></th>
+			</tr>
+			<tr ng-model="_orderId" data-orderId="{{_orderId}}" >
+				<td ng-model="_name"> {{_name}} </td>
+				<td ng-model="_phoneNo">{{_phoneNo|flage_phone}}</td>
+				<td ng-model="_cityCode">{{_cityCode}}</td>
+				<td ng-model="_type">{{_type}}</td>
+				<td ng-model="_createTime">{{_createTime}}</td>
+				<td ng-mpdel="_licenseNo">{{_licenseNo}}</td>
+				<td ng-model="_frameNo">{{_frameNo}}</td>
+				<td ng-model="_modelName">{{_modelName}}</td>
+				<td ng-model="_licenseDate">{{_licenseDate}}</td>
+				<td ng-model="_insureComName">{{_insureComName}}</td>
+				<td ng-model="_biPremium">{{_biPremium}}</td>
+				<td ng-model="_ciPremium">{{_ciPremium}}</td>
+				<td ng-model="_vehicleTaxPremium" >{{_vehicleTaxPremium}}</td>
+				<td>
+					<a ui-sref="sea" ng-model="carId" data-carid="{{carId}}"  ng-click="ver()">查看</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

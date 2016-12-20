@@ -1,0 +1,240 @@
+.detailed {
+  width: 100%;
+  font-size: .14rem;
+}
+.detailed .header {
+  width: 1000px;
+  height: .62rem;
+  margin: 0 auto;
+}
+.detailed .header .headerbox {
+  width: 100%;
+  height: 100%;
+}
+.detailed .header .headerbox > div {
+  float: left;
+  padding-top: .1rem;
+}
+.detailed .header .headerbox > div:nth-child(1) {
+  width: 2.28rem;
+}
+.detailed .header .headerbox > div:nth-child(1) em,
+.detailed .header .headerbox > div:nth-child(1) i {
+  float: left;
+  text-align: center;
+}
+.detailed .header .headerbox > div:nth-child(1) em {
+  width: 0.4rem;
+  height: 100%;
+}
+.detailed .header .headerbox > div:nth-child(1) i {
+  color: #888888;
+  font-size: 0.18rem;
+  padding: 0.1rem;
+}
+.detailed .header .headerbox > div:nth-child(2) {
+  width: 6.3rem;
+  line-height: .4rem;
+}
+.detailed .header .headerbox > div:nth-child(3) {
+  padding-top: .16rem;
+  line-height: .4rem;
+  color: #ff7c5f;
+}
+.detailed .detailedbox {
+  padding-top: .2rem;
+  width: 1000px;
+  margin: 0 auto;
+}
+.detailed .detailedbox .main .btn {
+  background: #ff704f;
+  width: 4.0rem;
+  margin: .20rem auto 1rem;
+  color: #fff;
+  display: none;
+}
+.detailed .detailedbox .main .daizhi {
+  display: none;
+}
+.detailed .detailedbox .main .daizhi .btn {
+  background: #ff704f;
+  width: 3.0rem;
+  margin: 0 .15rem;
+  color: #fff;
+  display: block;
+  display: inline-block;
+}
+.detailed .detailedbox table {
+  border-color: #ccc;
+  border: none;
+  width: 100%;
+  margin-bottom: .2rem;
+  border-top: 2px solid #06b5ff;
+  font-size: .16rem;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.detailed .detailedbox table tbody {
+  width: 100%;
+}
+.detailed .detailedbox table:nth-child(2) tr td:nth-child(1) {
+  width: 172px;
+}
+.detailed .detailedbox table:nth-child(5) tr td:nth-child(1) {
+  width: 308px;
+}
+.detailed .detailedbox table:nth-child(6) tr td:nth-child(1) {
+  width: 474px;
+}
+.detailed .detailedbox table:nth-child(6) tr td:nth-child(2) {
+  width: 117px;
+}
+.detailed .detailedbox table:nth-child(6) tr td:nth-child(3) {
+  width: 400px;
+}
+.detailed .detailedbox table:nth-child(8) tr td:nth-child(1) {
+  width: 180px;
+}
+.detailed .detailedbox table tr {
+  border: 1px solid #ccc;
+}
+.detailed .detailedbox table th {
+  background: #eee;
+  height: .5rem;
+  font-size: .16rem;
+  padding-left: .18rem;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-align: left;
+  color: #222;
+  width: 100%;
+  position: relative;
+  border: 1px solid #ccc;
+}
+.detailed .detailedbox table th a {
+  position: absolute;
+  width: .4rem;
+  height: .4rem;
+  top: 0;
+  right: 0;
+  background: url(../../img/cheng_03.png) no-repeat;
+  background-size: 100% 100%;
+}
+.detailed .detailedbox table td {
+  border: 1px solid #ccc;
+  padding-left: .18rem;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-align: left;
+  color: #474747;
+  height: .45rem;
+  line-height: .45rem;
+}
+.detailed .detailedbox table td div.s {
+  float: left;
+  padding-left: .2rem;
+  height: 100%;
+}
+.detailed .detailedbox table td div.s:nth-child(1) {
+  width: 459px;
+  padding-left: 0;
+}
+.detailed .detailedbox table td div.s:nth-child(2) {
+  width: 1.17rem;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+.detailed .detailedbox table td div.s:nth-child(3) {
+  width: 3.1rem;
+  padding-left: 0;
+}
+.detailed .detailedbox table td div.s p {
+  padding-left: .2rem;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+}
+.detailed .detailedbox table td div.s p:last-child {
+  border: 0;
+}
+.detailed .detailedbox table.htl tr:nth-child(2) {
+  background: #d5ecff;
+}
+.detailed .detailedbox table.htl td:nth-child(1) {
+  width: 187px;
+}
+body,
+html {
+  font-family: "微软雅黑";
+}
+.flogbox {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  top: 0;
+  left: 0;
+  display: none;
+}
+.codes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  top: 0;
+  left: 0;
+  display: none;
+}
+.codes #flog {
+  background: #fff;
+  color: #474747;
+}
+.welcome {
+  position: relative;
+}
+#flog {
+  width: 400px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: .2rem;
+  -webkit-transform: translate(-50%);
+  -moz-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  -o-transform: translate(-50%);
+  transform: translate(-50%);
+}
+#flog div {
+  text-align: center;
+  font-size: .16rem;
+  line-height: .28rem;
+}
+#flog div.titles {
+  font-size: .2rem;
+  margin-bottom: .2rem;
+}
+#flog div input {
+  display: inline-block;
+  width: 50%;
+}
+#flog p {
+  text-align: center;
+  background: #FF704F;
+  color: #fff;
+  line-height: .3rem;
+  font-size: .16rem;
+  cursor: pointer;
+  width: 200px;
+  margin: 0 auto;
+  border-radius: 5px;
+  margin-top: .2rem;
+}
+#flog p:active {
+  background: #ff3e1e;
+}
+/*# sourceMappingURL=detailed.css.map */

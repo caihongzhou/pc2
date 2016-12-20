@@ -1,0 +1,212 @@
+.order_cont {
+  width: 1000px;
+  margin: 0 auto;
+  padding-top: .17rem;
+}
+.order_cont .order-top {
+  width: 100%;
+}
+.order_cont .order-top > div {
+  display: inline-block;
+  padding-right: .02rem;
+  margin-top: .2rem;
+  height: .4rem;
+  position: relative;
+}
+.order_cont .order-top > div:last-child {
+  padding: 0;
+}
+.order_cont .order-top > div span {
+  display: inline-block;
+  padding: 0 .1rem;
+}
+.order_cont .order-top > div input {
+  display: inline-block;
+  width: 1.8rem;
+}
+.order_cont .order-top > div input.datainp {
+  width: 1.35rem;
+}
+.order_cont .order-top > div a {
+  position: absolute;
+  right: .1rem;
+  top: .08rem;
+  color: #ccc;
+}
+.order_cont .order-top > div a:hover {
+  color: #ff704f;
+}
+.order_cont .order-top .btns {
+  display: inline-block;
+  width: .5rem;
+  background: #ff704f;
+  -webkit-border-radius: .05rem;
+  -moz-border-radius: .05rem;
+  border-radius: .05rem;
+  text-align: center;
+  color: #fff;
+  font-size: .12rem;
+  padding: .07rem 0;
+  box-sizing: border-box;
+  position: relative;
+  top: .0rem;
+  left: 0.07rem;
+  cursor: pointer;
+}
+.order_cont .topheader {
+  width: 100%;
+  height: .5rem;
+  border-top: 3px solid #06b5ff;
+  margin-top: .2rem;
+}
+.order_cont .topheader ul {
+  width: 100%;
+  line-height: .4rem;
+  margin: 0 auto;
+}
+.order_cont .topheader ul li {
+  text-align: center;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 0;
+}
+.order_cont .topheader ul li a {
+  color: #333333;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: .16rem;
+}
+.order_cont .topheader ul li.active {
+  background: #06b5ff;
+  position: relative;
+  border-bottom: 0;
+}
+.order_cont .topheader ul li.active::after {
+  content: ' ';
+  position: absolute;
+  top: .41rem;
+  right: 50%;
+  width: 0;
+  height: 0;
+  border-left: .1rem solid transparent;
+  border-right: .1rem solid transparent;
+  border-top: .12rem solid #06b5ff;
+}
+.order_cont .topheader ul li.active a {
+  color: #fff;
+}
+.order_cont table {
+  border-color: #ccc;
+  border: none;
+  border-top: 2px solid #06b5ff;
+  margin-top: .2rem;
+}
+.order_cont table tr {
+  border: 1px solid #ccc;
+}
+.order_cont table th {
+  background: #eee;
+  height: 1.17rem;
+  font-size: 0.16rem;
+  font-weight: normal;
+  text-align: center;
+  color: #222;
+  border: 1px solid #ccc;
+}
+.order_cont table th:nth-child(3) {
+  padding: 0 .2rem;
+}
+.order_cont table th:nth-child(4) {
+  padding: 0 .1rem;
+}
+.order_cont table th:nth-child(16),
+.order_cont table th:nth-child(17) {
+  padding: 0 .14rem;
+}
+.order_cont table td {
+  text-align: center;
+  border-color: #ccc;
+  color: #474747;
+  border: 1px solid #ccc;
+  padding: 0.3rem 0.02rem;
+}
+.order_cont table td:nth-child(18) a {
+  color: #ff704f;
+  cursor: pointer;
+}
+.order_cont table td:nth-child(6),
+.order_cont table td:nth-child(7),
+.order_cont table td:nth-child(16) {
+  width: 0.6rem;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+.order_cont table th:nth-child(1),
+.order_cont table td:nth-child(1),
+.order_cont table th:nth-child(18),
+.order_cont table td:nth-child(18) {
+  width: 0.28rem;
+  padding: 0 0.03rem;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+.order_cont table th:nth-child(2),
+.order_cont table td:nth-child(2),
+.order_cont table th:nth-child(3),
+.order_cont table td:nth-child(3) {
+  width: 0.82rem;
+}
+.order_cont table th:nth-child(5),
+.order_cont table td:nth-child(5),
+.order_cont table th:nth-child(4),
+.order_cont table td:nth-child(4) {
+  width: 0.55rem;
+}
+.order_cont table th:nth-child(7),
+.order_cont table td:nth-child(7),
+.order_cont table th:nth-child(6),
+.order_cont table td:nth-child(6),
+.order_cont table th:nth-child(9),
+.order_cont table td:nth-child(9) {
+  width: 0.64rem;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+.order_cont table th:nth-child(8),
+.order_cont table td:nth-child(8) {
+  width: 0.6rem;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+.order_cont table th:nth-child(10),
+.order_cont table td:nth-child(10),
+.order_cont table th:nth-child(12),
+.order_cont table td:nth-child(12),
+.order_cont table th:nth-child(11),
+.order_cont table td:nth-child(11),
+.order_cont table th:nth-child(15),
+.order_cont table td:nth-child(15) {
+  width: 0.35rem;
+  padding: 0 0.05rem;
+}
+.order_cont table th:nth-child(13),
+.order_cont table td:nth-child(13),
+.order_cont table th:nth-child(14),
+.order_cont table td:nth-child(14) {
+  width: 0.84rem;
+}
+.order_cont table th:nth-child(16),
+.order_cont table td:nth-child(16),
+.order_cont table th:nth-child(17),
+.order_cont table td:nth-child(17) {
+  width: .68rem;
+}
+.order_cont .pager li {
+  cursor: pointer;
+}
+.order_cont .pager li a:hover {
+  background: #ff704f;
+  color: #fff;
+  border: 1px solid #ff704f;
+}
+/*# sourceMappingURL=order.css.map */

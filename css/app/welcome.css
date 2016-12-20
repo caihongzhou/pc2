@@ -1,0 +1,106 @@
+.welcome {
+  width: 100%;
+  font-size: .14rem;
+}
+.welcome .header {
+  width: 1000px;
+  height: .62rem;
+  margin: 0 auto;
+}
+.welcome .header .headerbox {
+  width: 100%;
+  height: 100%;
+}
+.welcome .header .headerbox > div {
+  float: left;
+  padding-top: .1rem;
+}
+.welcome .header .headerbox > div:nth-child(1) {
+  width: 2.28rem;
+}
+.welcome .header .headerbox > div:nth-child(1) em,
+.welcome .header .headerbox > div:nth-child(1) i {
+  float: left;
+  text-align: center;
+}
+.welcome .header .headerbox > div:nth-child(1) em {
+  width: 0.4rem;
+  height: 100%;
+}
+.welcome .header .headerbox > div:nth-child(1) i {
+  color: #888888;
+  font-size: 0.18rem;
+  padding: 0.1rem;
+}
+.welcome .header .headerbox > div:nth-child(2) {
+  width: 6.3rem;
+  line-height: .4rem;
+}
+.welcome .header .headerbox > div:nth-child(2) .nav-tabs {
+  border-bottom: 0;
+}
+.welcome .header .headerbox > div:nth-child(2) .nav-tabs > li {
+  border: 0;
+  height: .5rem;
+  padding: 0 .08rem;
+  cursor: pointer;
+}
+.welcome .header .headerbox > div:nth-child(2) .nav-tabs > li > a {
+  border: 0;
+  color: #333333;
+  font-size: .16rem;
+}
+.welcome .header .headerbox > div:nth-child(2) .nav-tabs > li > a:hover {
+  background: #fff;
+  color: #06b5ff;
+}
+.welcome .header .headerbox > div:nth-child(2) .nav-tabs > li > a:visited {
+  background: #fff;
+  color: #333;
+}
+.welcome .header .headerbox > div:nth-child(2) .nav-tabs > li.active {
+  cursor: pointer;
+  border-bottom: 2px solid #06b5ff;
+}
+.welcome .header .headerbox > div:nth-child(2) .nav-tabs > li.active a {
+  background: #fff;
+  color: #06b5ff;
+}
+.welcome .header .headerbox > div:nth-child(3) {
+  padding-top: .16rem;
+  line-height: .4rem;
+}
+.welcome .header .headerbox > div:nth-child(3) > div {
+  float: left;
+}
+.welcome .header .headerbox > div:nth-child(3) > div:nth-child(1) {
+  width: .24rem;
+  height: .24rem;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: .07rem;
+}
+.welcome .header .headerbox > div:nth-child(3) > div:nth-child(1) img {
+  width: 100%;
+  height: 100%;
+}
+.welcome .header .headerbox > div:nth-child(3) > div:nth-child(2) {
+  line-height: .24rem;
+  font-size: .14rem;
+  width: .7rem;
+}
+.welcome .header .headerbox > div:nth-child(3) > div:nth-child(3) {
+  width: .22rem;
+  height: .22rem;
+}
+.welcome .header .headerbox > div:nth-child(3) > div:nth-child(3) img {
+  width: 100%;
+  height: 100%;
+}
+.welcome .bannerbox {
+  width: 100%;
+}
+.welcome .bannerbox img {
+  width: 100%;
+}
+/*# sourceMappingURL=welcome.css.map */

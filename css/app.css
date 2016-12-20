@@ -1,0 +1,9 @@
+
+@import "./app/home.css";
+@import "./app/login.css";
+@import "./app/resat.css";
+@import "./app/welcome.css";
+@import "./app/getData.css";
+@import "./app/order.css";
+@import "./app/detailed.css";
+@import url("font/iconfont.css");

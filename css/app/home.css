@@ -1,0 +1,32 @@
+body,
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  font: 100px "黑体";
+}
+#box {
+  width: 100%;
+  height: 100%;
+  font-size: .16rem;
+}
+#box .alertbox {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  display: none;
+}
+#box .alertbox .alert {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+  width: 200px;
+  height: 150px;
+  color: #f00;
+  background: #fff;
+}
+/*# sourceMappingURL=home.css.map */
