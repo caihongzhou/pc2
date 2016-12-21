@@ -60,6 +60,7 @@ my_DataVO.controller('detailed', ['$scope', '$http', '$state', function($scope, 
 	if(OrderStatus == "已失效") {
 		$('.shixiao').css('display', 'block');
 		$('.adisable').css('display', 'none');
+		$('.chongjian').css('display','block');
 	} else if(OrderStatus == "未完成") {
 		$('.weiwanc').css('display', 'block');
 	} else if(OrderStatus == "已支付") {
@@ -70,6 +71,7 @@ my_DataVO.controller('detailed', ['$scope', '$http', '$state', function($scope, 
 		$('.adisable').css('display', 'none');
 	} else if(OrderStatus == "核保中") {
 		$('.pad').css('display', 'block');
+		$('.adisable').css('display', 'none');
 		$('.pad').text("核保中");
 
 	}
@@ -175,6 +177,7 @@ my_DataVO.controller('detailed', ['$scope', '$http', '$state', function($scope, 
 
 			$scope._custName = data.custName;
 			$scope._phoneNo = data.phoneNo;
+			$scope._number=$scope._phoneNo;
 			$scope._cappId = data.cappId;
 			$scope._showId = data.showId;
 			if(data.applicantAsOwner == true) { //投保人信息
@@ -275,11 +278,30 @@ my_DataVO.controller('detailed', ['$scope', '$http', '$state', function($scope, 
 	error(function(data, status) {
 		fordata.errors_2('网络出错稍后重试')
 	});
+<<<<<<< .mine
+	localStorage.removeItem("chongjian")
 	var userdata = JSON.parse(localStorage.getItem("userdata"))
+	$scope.chongjian = function() {
+		localStorage.setItem('chenge_orderId',$scope._orderId);
+		localStorage.setItem('chongjian',"ture")
+		window.location.href="outSingle.html#/sigleone"
+	}
 	$scope.duanxin = function() {
 		if($scope._precisionPriceId) {
 			fordata.shows();
 
+=======
+	//点击拨打的phone_call方法
+	$scope.phone_call=function(id){
+		Interface.callBack(userId,orderId,"18910654027","13020078383");
+		//Interface.callBack(userId,orderId,exten,$scope._number);
+	}
+	//点击挂断执行的方法
+	$scope.phone_hangUp=function(){
+	//	alert("2");
+	}
+	
+>>>>>>> .r171
 			Interface.smsShareOrderInfo(orderId, userdata.userNum, $scope._precisionPriceId)
 		} else {
 			fordata.errors_2("还没报价")
@@ -312,7 +334,6 @@ my_DataVO.controller('basic', ['$scope', '$http', '$state', '$filter', function(
 
 	var userId = localStorage.getItem("userId");
 	var orderId = localStorage.getItem("chenge_orderId");
-
 	if(orderId == null) {
 		$scope._orderId = "";
 
@@ -329,13 +350,15 @@ my_DataVO.controller('basic', ['$scope', '$http', '$state', '$filter', function(
 			}
 		}).
 		success(function(res) {
+
 			var data = res.data;
 			console.log(res)
 			if(res.flag == "error") {
-				fordata.errors_2(res.msg);
+
+				fordata.errors_2(res.msg)
 				window.history.back(-1)
 			} else if(res.flag == "success") {
-				fordata.nones();
+				fordata.nones()
 				$scope._orderId = data.orderId;
 				$scope._createTime = fordata.formatDate(data.createTime);
 				$scope._type = data.agentName;
@@ -357,12 +380,14 @@ my_DataVO.controller('basic', ['$scope', '$http', '$state', '$filter', function(
 					//alert($scope.yes)
 					if($scope.yes == "true") {
 						$('#datebut2').removeAttr('disabled')
+						$('#datebut2a').removeAttr('disabled', 'disabled');
 					}
 				}
 				$scope.sds2 = function() {
 					if($scope.yes == "false") {
 
-						$('#datebut2').attr('disabled', 'disabled')
+						$('#datebut2').attr('disabled', 'disabled');
+						$('#datebut2a').attr('disabled', 'disabled');
 					}
 				}
 
@@ -400,6 +425,7 @@ my_DataVO.controller('basic', ['$scope', '$http', '$state', '$filter', function(
 					$scope.agree_sa = true;
 					$('#datebut2').attr('disabled', 'disabled')
 					$scope.yes = data.specialCarFlag;
+					$('#datebut2a').attr('disabled', 'disabled')
 				}
 
 			}
@@ -407,7 +433,7 @@ my_DataVO.controller('basic', ['$scope', '$http', '$state', '$filter', function(
 		}).
 		error(function(data, status) {
 
-			fordata.errors_2("网络出错稍后重试")
+			fordata.errors_2("出错稍后重试")
 		});
 	}
 
@@ -415,7 +441,7 @@ my_DataVO.controller('basic', ['$scope', '$http', '$state', '$filter', function(
 		$modalInstance.dismiss();
 	};
 
-		$scope.cityBlock = function() {
+	$scope.cityBlock = function() {
 		$('.selects').css('display', 'block');
 		$scope.sheng = shengs_1.province;
 
@@ -491,7 +517,8 @@ my_DataVO.controller('basic', ['$scope', '$http', '$state', '$filter', function(
 
 		if($scope._phoneNo) {
 			if(!(/^1[34578]\d{9}$/.test($scope._phoneNo))) {
-				alert("手机号码有误，请重填");
+
+				fordata.errors_2("手机号码有误，请重填")
 				return false;
 			}
 		}
@@ -510,28 +537,31 @@ my_DataVO.controller('basic', ['$scope', '$http', '$state', '$filter', function(
 		if($("#cid").val()) {
 
 			if(!(/(^\d{15}$)|(^\d{17}([0-9]|X)$)/.test($("#cid").val()))) {
-				alert("身份证格式错误，请重新填写");
+
+				fordata.errors_2("身份证格式错误，请重新填写")
 				$("#cid").val()
 				return false;
 			}
 		}
 	}
 	$scope.chepai = function() {
-
+			$scope._licenseNo = $scope._licenseNo.toUpperCase();
 			if($scope._licenseNo) {
+
 				if(!(/^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$/.test($scope._licenseNo))) {
-					alert("车品牌号格式不对，请重填");
+
+					fordata.errors_2("车品牌号格式不对，请重填")
 					return false;
 				}
 			}
 		}
 		//创建订单
 	$scope.Create = function() {
-		console.log($scope._licenseNo)
+
 		if($scope._cityCode && $scope._licenseNo && $scope._custName && $scope._phoneNo) {
 
 			console.log(userId, $scope._orderId, $scope._cityCode, $scope._licenseNo, $scope._custName, $scope._phoneNo, $scope._cappId)
-			Orderajax.setorder_2(userId, $scope._licenseNo, $scope._custName, $scope._cappId, $scope._phoneNo, $scope._cityCode, $scope._orderId)
+			Orderajax.setorder('xian.html#/infor', userId, $scope._licenseNo, $scope._custName, $scope._cappId, $scope._phoneNo, $scope._cityCode, $scope._orderId)
 				//userId,licenseNo,ownerName,ownerID,ownerMobile,cityCode,orderId
 		}
 	}
@@ -738,6 +768,17 @@ my_DataVO.controller('basic_car', ['$scope', '$http', '$state', '$filter', funct
 				fordata.errors_2('请输入车牌号')
 			}
 
+		}
+	$scope.carne = function() {
+			
+		if($scope._frameNo) {
+			$scope._frameNo=$scope._frameNo.toUpperCase()
+			if(!(/^[a-zA-Z0-9]{0,17}$/.test($scope._frameNo))) {
+
+				fordata.errors_2('车架号格式不准确，请重填')
+				return false;
+			}
+		}
 		}
 		//根据车架号查询车辆信息
 	$scope.carinfs = function() {

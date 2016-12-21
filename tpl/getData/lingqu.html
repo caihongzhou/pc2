@@ -1,4 +1,4 @@
-<div class="welcome"  ng-controller="detailed">
+<div class="welcome" ng-controller="detailed">
 	<div class="detailed ">
 		<div class="header">
 			<div class="headerbox clearfix">
@@ -47,7 +47,7 @@
 					</tr>
 					<tr>
 						<td ng-model="_cappId">客户身份证号 ：<span>{{_cappId}}</span></td>
-						<td ng-model="_phoneNo">手机号 ： <span>{{_phoneNo}}</span></td>
+						<td ng-model="_phoneNo">手机号 ： <span>{{_phoneNo|flage_phone}}</span></td>
 
 					</tr>
 
@@ -61,7 +61,7 @@
 					</tr>
 					<tr>
 						<td ng-model="_applicantName">投保人姓名 ：<span>{{_applicantName}}</span></td>
-						<td ng-model="_applicantMobile">手机号 ：<span>{{_applicantMobile}}</span></td>
+						<td ng-model="_applicantMobile">手机号 ：<span>{{_applicantMobile|flage_phone}}</span></td>
 
 					</tr>
 					<tr>
@@ -80,7 +80,7 @@
 					</tr>
 					<tr>
 						<td ng-model="_insuredName">被保人姓名 ：<span>{{_insuredName}}</span></td>
-						<td ng-model="_insuredMobile">手机号 ：<span>{{_insuredMobile}}</span></td>
+						<td ng-model="_insuredMobile">手机号 ：<span>{{_insuredMobile|flage_phone}}</span></td>
 
 					</tr>
 					<tr>
@@ -185,51 +185,27 @@
 					</tr>
 					<tr>
 						<td ng-model="_addresseeDetails"> 配送地址 ： <span>{{_cityCodeshowes}}{{_addresseeDetails}}</span></td>
-						<td ng-modes="_gift">投保礼 ：<span>{{_gift}}</span></td>
+						<td  ng-model="_gift">投保礼 ：<span>{{_gift}}</span></td>
 
 					</tr>
 
 				</table>
-				<button class="btn btn-lg  btn-block weiwanc" ng-click="sureque()"  >确定核保</button>
-				<button class="btn btn-lg  btn-block pad" disabled="disabled" style="background:#ccc; color:#474747" >已支付</button>
-				<button class="btn btn-lg  btn-block pads" disabled="disabled" style="background:#ccc; color:#474747" >未完成</button>
-				<button class="btn btn-lg  btn-block shixiao" disabled="disabled"  style="background:#ccc; color:#474747"  >已失效</button>
-				<button class="btn btn-lg btn-block chongjian" ng-click="chongjian()" >重建</button> 
-				<div class="daizhi">
-					<button class="btn btn-lg btn-block" ng-click="zhifu()" >支付</button> 
-					<button class="btn btn-lg btn-block" ngclick="diazhifu()" >代付</button> 
-					<button class="btn btn-lg btn-block" ng-click="chongjian()" >重建</button> 
-				</div>
-			
-		</div>
-		<div class="cont-left">
-			<div class="le-cont" ng-click="phone_tag()">
-				<img src="./img/phone.png" />
-
+					<button class="btn btn-lg  btn-block weiwanc" ng-click="ver()" style="display: block;" >领取</button>
+				
 			</div>
-			<ul ng-hide="phone_show">
-				<li>订单号：<em></em></li>
-				<li>客户姓名：<em></em></li>
-				<li>车牌号：</li>
-
-				<li>手机号：<input type="tel" ng-model="number" placeholder="123456788" vlue="112345678" /></li>
-				<li>电话号：<em></em></li>
-				<li>结束码：</li>
-				<li><button class="active">拨打</button><button>挂断</button></li>
-			</ul>
-
 		</div>
-
+			
+	
 	</div>
-	<div class="flogbox">
+<div class="flogbox">
 	<div id="flog">
 		<div class="titles">点点云服</div>
-	<div>
-		<em class="texta">
+		<div>
+			<em class="texta">
 			车辆信息不全
 		</em>
-	</div>
-	<p ng-click="sures()">确定</p>
+		</div>
+		<p ng-click="sures()">确定</p>
 	</div>
 </div>
 <div class="codes">
@@ -240,6 +216,8 @@
 	</div>
 	<p ng-click="codessure()">确定</p>
 	</div>
+</div>
+
 </div>
 
 </div>

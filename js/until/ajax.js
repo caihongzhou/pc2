@@ -95,12 +95,35 @@ var Interface = {
 		})
 
 	},
-
+	//拨打电话之后触发的方法
+	callBack:function(userId,orderId,exten,phoneNum){     
+		$.ajax({
+			type:"post",
+			url:intUrl+'/qiMoCall/toCall',
+			data:{
+				"userId":userId,
+				"exten":exten,
+				"phoneNum":phoneNum,
+				"orderId":orderId
+			},
+			success: function(res){
+				console.log(res);
+				var data = res.data
+				if(res.flag == "success"){
+					console.log("成功")
+				}else if(res.flag == "error"){
+					console.log(res.msg);
+				}
+			},
+			error:function(){
+				alert("请求信息错误！");
+			}
+		})
+	},
 	Province: function() { //
 		$.ajax({
 			type: 'get',
 			url: "./js/sheng.json",
-
 			data: {
 
 			},
@@ -124,7 +147,7 @@ var Interface = {
 		$.ajax({
 			type: 'post',
 			url: intUrl + "/app/area/getCityByProvince",
-	
+
 			data: {
 				"province": "00"
 			},
@@ -180,10 +203,14 @@ var Interface = {
 			},
 			success: function(res) {
 				console.log(res);
-
+				if(res.flag=="success"){
+					window.location.href="getData.html#/sea"
+				}else{
+					fordata.errors_2(res.msg);
+				}
 			},
 			error: function() {
-
+				fordata.errors_2("网络出错，稍后重试");
 			}
 		})
 	},
@@ -644,7 +671,7 @@ var Orderajax = {
 					}
 					sessionStorage.setItem("carinfor", JSON.stringify(carinfor));
 					localStorage.setItem("chenge_orderId", data.orderId)
-
+					localStorage.removeItem("chongjian")
 					window.location.href = href; 
 				}
 

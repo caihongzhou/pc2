@@ -19,12 +19,16 @@ getDatas.config(function($stateProvider, $urlRouterProvider) {
 			url: "/one",
 			templateUrl: "tpl/getData/get.html"
 		})
+		
 	$stateProvider
 		.state("sea", {
 			url: "/sea",
 			templateUrl: "tpl/getData/xian.html"
 		})
-
+	.state("lingqu", {
+			url: "/lingqu",
+			templateUrl: "tpl/getData/lingqu.html"
+		})
 	.state("basic", {
 		url: "/basic",
 		templateUrl: "tpl/getData/basic.html"
@@ -56,6 +60,7 @@ getDatas.config(function($stateProvider, $urlRouterProvider) {
 getDatas.controller('getss', ['$scope', '$http', '$state', function($scope, $http, $state) {
 	var userId = localStorage.getItem("userId");
 	//获取数据 
+	fordata.shows()
 	$http({
 		method: "POST",
 		url: intUrl + '/app/customerData/applyCustomerData',
@@ -70,6 +75,7 @@ getDatas.controller('getss', ['$scope', '$http', '$state', function($scope, $htt
 		
 		
 		if(res.flag=="success"){
+			fordata.nones()
 			var data = res.data;
 			$scope._orderId=data.orderId ;
 		$scope._name=data.custName  ;
@@ -86,21 +92,25 @@ getDatas.controller('getss', ['$scope', '$http', '$state', function($scope, $htt
 		  $scope._biPremium=data.biPremium;
 		 $scope._ciPremium=data.ciPremium 
 		}else{
-			alert("获取数据失败,"+res.msg)
+			
+			fordata.errors_2(res.msg)
 		}
 		
 		 
 		
 	}).
 	error(function(data, status) {
-		alert("请求出错，请稍稍后重试")
+		
+		fordata.errors_2("请求出错，请稍稍后重试")
 	});
-	$scope.ver = function(){
+	$scope.carsid=function(){
 		var userId = localStorage.getItem("userId");
 		var carid = $scope.carId;
 		//console.log(userId,carid)
 		localStorage.setItem("_orderId",$scope._orderId)
-		//Interface.verifyApply(userId,carid);
+		localStorage.setItem("carid",$scope.carId)
+		//localStorage.setItem("_orderId","ff808181591a324a01591b09bbb5018a")
+		
 	}
 }]);
 getDatas.filter("flage_phone", function() {

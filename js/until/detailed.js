@@ -2,6 +2,12 @@ getDatas.controller('detailed', ['$scope', '$http', '$state', function($scope, $
 	//跳转修改页面
 	var userId = localStorage.getItem("userId");
 	var orderId = localStorage.getItem("_orderId");
+	$scope.ver = function(){
+		var carid = localStorage.getItem("carid");
+		console.log(carid)
+		console.log(userId)
+		Interface.verifyApply(userId,carid);
+	}
 	fordata.shows();
 	$http({
 		method: "POST",
@@ -24,6 +30,7 @@ getDatas.controller('detailed', ['$scope', '$http', '$state', function($scope, $
 		} else if(res.flag == "success") {
 			if(data.orderStatus == "已失效") {
 				$('.shixiao').css('display', 'block');
+				$('.chongjian').css('display','block');
 				$('.adisable').css('display', 'none');
 			} else if(data.orderStatus == "未完成") {
 				$('.weiwanc').css('display', 'block');
@@ -35,10 +42,12 @@ getDatas.controller('detailed', ['$scope', '$http', '$state', function($scope, $
 				$('.adisable').css('display', 'none');
 			} else if(data.orderStatus == "核保中") {
 				$('.pad').css('display', 'block');
+				$('.adisable').css('display', 'none');
 				$('.pad').text("核保中");
 
 			} else {
 				$('.pad').css('display', 'block');
+				$('.adisable').css('display', 'none');
 				$('.pad').text(data.orderStatus);
 			}
 			fordata.nones();
@@ -220,6 +229,12 @@ getDatas.controller('detailed', ['$scope', '$http', '$state', function($scope, $
 		$('.codes').css('display','none');
 		Interface.getPayInfo(orderId,$scope._codes)
 	}
+	$scope.chongjian = function() {
+		localStorage.setItem('chenge_orderId',$scope._orderId);
+		localStorage.setItem('chongjian',"ture")
+		window.location.href="outSingle.html#/sigleone"
+	}
+	
 }]);
 getDatas.controller('basic', ['$scope', '$http', '$state', '$filter', function($scope, $http, $state, $filter) {
 	//修改带出信息
@@ -662,6 +677,17 @@ getDatas.controller('basic_car', ['$scope', '$http', '$state', '$filter', functi
 				fordata.errors_2('请输入车牌号')
 			}
 
+		}
+	$scope.carne = function() {
+			
+		if($scope._frameNo) {
+			$scope._frameNo=$scope._frameNo.toUpperCase()
+			if(!(/^[a-zA-Z0-9]{0,17}$/.test($scope._frameNo))) {
+
+				fordata.errors_2('车架号格式不准确，请重填')
+				return false;
+			}
+		}
 		}
 		//根据车架号查询车辆信息
 	$scope.carinfs = function() {

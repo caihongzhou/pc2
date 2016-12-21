@@ -1,4 +1,321 @@
-Single.controller('basic', ['$scope', '$http', '$state', '$filter', function($scope, $http, $state, $filter) {
+var my_DataVO = angular.module("my_DataVO", ['ui.router']);
+my_DataVO.config(function($stateProvider, $urlRouterProvider) {
+	$urlRouterProvider.otherwise("/infor")
+	$stateProvider
+		.state("infor", {
+			url: "/infor",
+			templateUrl: "tpl/inforall.html"
+		})
+		.state("infors", {
+			url: "/infors",
+			templateUrl: "tpl/hebao.html"
+		})
+		.state("basic", {
+			url: "/basic",
+			templateUrl: "tpl/myorder/change/basic.html"
+		})
+
+	.state("applicant", {
+			url: "/applicant",
+			templateUrl: "tpl/myorder/change/applicant.html"
+		})
+		.state("carinformation", {
+			url: "/carinformation",
+			templateUrl: "tpl/myorder/change/carinformation.html"
+		})
+
+	.state("Insurance", {
+			url: "/Insurance",
+			templateUrl: "tpl/myorder/change/bijia.html"
+		})
+		.state("bijia", {
+			url: "/bijia",
+			templateUrl: "tpl/myorder/change/Insurance.html"
+		})
+		.state("newbijia", {
+			url: "/newbijia",
+			templateUrl: "tpl/myorder/change/newbijia.html"
+		})
+});
+
+my_DataVO.controller('top', ['$scope', '$http', '$state', function($scope, $http, $state) {
+	$scope.firstName = localStorage.getItem("usernume");
+	$scope.fistPhoto = localStorage.getItem("photoUr");
+	$scope.singout = function() {
+		localStorage.removeItem('user');
+
+	}
+	$scope.ver = function(item, data) {
+
+		localStorage.setItem("_orderId", item);
+
+	}
+
+}]);
+
+my_DataVO.controller('detailed', ['$scope', '$http', '$state', function($scope, $http, $state) {
+	//跳转修改页面
+	var OrderStatus = localStorage.getItem("_orderStatus");
+	console.log(OrderStatus);
+	if(OrderStatus == "已失效") {
+		$('.shixiao').css('display', 'block');
+		$('.adisable').css('display', 'none');
+		$('.chongjian').css('display','block');
+	} else if(OrderStatus == "未完成") {
+		$('.weiwanc').css('display', 'block');
+	} else if(OrderStatus == "已支付") {
+		$('.pad').css('display', 'block');
+		$('.adisable').css('display', 'none');
+	} else if(OrderStatus == "待支付") {
+		$('.daizhi').css('display', 'block');
+		$('.adisable').css('display', 'none');
+	} else if(OrderStatus == "核保中") {
+		$('.pad').css('display', 'block');
+		$('.adisable').css('display', 'none');
+		$('.pad').text("核保中");
+
+	}
+	$scope._chenge = function() {
+		console.log($scope._orderId)
+
+		localStorage.setItem("chenge_orderId", $scope._orderId);
+	};
+
+	$scope._chengeno = function() {
+
+		if($scope._licenseNo && $scope._modelName && $scope._frameNo && $scope._engineNo) {
+			localStorage.setItem("chenge_orderId", $scope._orderId);
+			if($scope._totalPremium) {
+				window.location.href = "xian.html#/newbijia";
+
+			} else {
+				console.log(33)
+				window.location.href = "./xian.html#/bijia";
+			}
+
+		} else {
+			$('.flogbox').css('display', 'block')
+			$('.flogbox em').text('车辆信息不全，请补全信息')
+		}
+	};
+
+	$scope.sureque = function() {
+		if($scope._licenseNo && $scope._modelName && $scope._frameNo && $scope._engineNo && $scope._totalPremium && $scope._addresseeName && $scope._addresseeMobile && $scope._addresseeDetails) {
+			fordata.shows();
+			Interface.hebao(orderId, userId)
+		} else {
+			$('.flogbox').css('display', 'block')
+			$('.flogbox em').text('信息不全，请补全信息')
+		}
+	}
+	$scope.sures = function() {
+
+		$('.flogbox').css('display', 'none')
+	}
+	$scope.phone_show = true;
+	$scope.firstName = localStorage.getItem("usernume");
+	$scope.fistPhoto = localStorage.getItem("photoUr");
+	$scope.singout = function() {
+		localStorage.removeItem('user');
+
+	}
+	$scope.phone_tag = function() {
+
+		$scope.phone_show = !$scope.phone_show;
+	};
+	var userId = localStorage.getItem("userId");
+	var orderId = localStorage.getItem("_orderId");
+	$('.flogbox').css('display', 'block')
+	$('.flogbox p').css('display', 'none')
+	$('.flogbox em').text('数据请求中。。。')
+	$http({
+		method: "POST",
+		url: intUrl + '/app/order/getOrderDetailDataVO',
+		//url : intUrl +'/app/order/findMainOrder',
+		params: {
+			"userId": userId,
+			"orderId": orderId
+				//"orderStatus":"未完成"
+		}
+	}).
+	success(function(res) {
+		var data = res.data;
+
+		console.log(res)
+		if(res.flag == "error") {
+			fordata.nones();
+			window.history.back(-1)
+		} else if(res.flag == "success") {
+			$('.flogbox').css('display', 'none')
+			$('.flogbox em').text('')
+			if(data.orderStatus == "已失效") {
+				$('.shixiao').css('display', 'block');
+				$('.adisable').css('display', 'none');
+			} else if(data.orderStatus == "未完成") {
+				$('.weiwanc').css('display', 'block');
+			} else if(data.orderStatus == "已支付") {
+				$('.pad').css('display', 'block');
+				$('.adisable').css('display', 'none');
+			} else if(data.orderStatus == "待支付") {
+				$('.daizhi').css('display', 'block');
+				$('.adisable').css('display', 'none');
+			} else if(data.orderStatus == "核保中") {
+				$('.pad').css('display', 'block');
+				$('.pad').text("核保中");
+
+			} else {
+				$('.pad').css('display', 'block');
+				$('.pad').text(data.orderStatus);
+			}
+			fordata.nones();
+			$scope._orderId = data.orderId;
+			$scope._createTime = fordata.formatDate(data.createTime);
+			$scope._type = data.agentName;
+			$scope._cityCode = data.cityCode;
+			//显示地址
+			$scope._cityCodeshowe = showshengfen.shows(data.cityCode)
+
+			$scope._custName = data.custName;
+			$scope._phoneNo = data.phoneNo;
+			$scope._cappId = data.cappId;
+			$scope._showId = data.showId;
+			if(data.applicantAsOwner == true) { //投保人信息
+				$scope._applicantName = data.custName;
+				$scope._applicantMobile = data.phoneNo;
+				$scope._applicantIdNo = data.cappId;
+			} else {
+				$scope._applicantName = data.applicantName;
+				$scope._applicantMobile = data.applicantMobile;
+				$scope._applicantIdNo = data.applicantIdNo;
+			}
+			if(data.insuredAsOwner == true) { //被保人信息
+				$scope._insuredName = data.custName;
+				$scope._insuredMobile = data.phoneNo;
+				$scope._insuredIdNo = data.cappId;
+			} else {
+				$scope._insuredName = data.insuredName;
+				$scope._insuredMobile = data.insuredMobile;
+				$scope._insuredIdNo = data.insuredIdNo;
+			}
+			//车辆信息
+			$scope._licenseNo = data.licenseNo;
+			$scope._modelName = data.modelName;
+			$scope._frameNo = data.frameNo;
+			$scope._engineNo = data.engineNo;
+			$scope._registerDate = fordata.formatDate2(data.registerDate);
+			$scope._licenseDate = fordata.formatDate(data.licenseDate);
+			if(data.specialCarFlag == false) {
+				$scope._specialCarFlag = "否";
+			} else if(data.specialCarFlag == true) {
+				$scope._specialCarFlag = "是";
+			}
+			//承保信息
+
+			if(data.precisionPriceVO.insureComCode) {
+
+				$scope._insureComCode = data.precisionPriceVO.insureComCode;
+				$scope.findC = findAllCompany;
+			} else {
+				$scope.findC = '0';
+				$scope._insureComCode = '0'
+
+			}
+			$scope._totalPremium = data.precisionPriceVO.totalPremium;
+			$scope._Credit = data.precisionPriceVO.credit;
+			$scope._biPremium = data.precisionPriceVO.biPremium;
+			$scope._ciPremium = data.precisionPriceVO.ciPremium;
+			$scope._precisionPriceId = data.precisionPriceVO._precisionPriceId;
+			$scope._vehicleTaxPremium = data.precisionPriceVO.vehicleTaxPremium
+			$scope._ciStartDate = fordata.formatDate2(data.precisionPriceVO.ciStartDate);
+			$scope._biStartDate = fordata.formatDate2(data.precisionPriceVO.biStartDate);
+			$scope._ciStartDate2 = fordata.formatDate3(data.precisionPriceVO.ciStartDate);
+			$scope._biStartDate2 = fordata.formatDate3(data.precisionPriceVO.biStartDate);
+
+			var arr1 = data.precisionPriceVO.dealCredit;
+			var arr2 = new Array();
+			for(var i = 0; i < arr1.length; i++) {
+				arr2.push([i + 1, arr1[i]]);
+			}
+			$scope._dealCredit = arr2;
+			//$scope._dealCredit = [
+			//					["100积分,优惠券"],["200积分,创建订单奖励"],["300积分,徒弟出单奖励"]
+			//				];
+
+			//险别信息
+			$scope.kindList = data.precisionPriceVO.kindList;
+			//配送信息
+			$scope._addresseeName = data.addresseeName;
+			$scope._addresseeMobile = data.addresseeMobile;
+			$scope._addresseeDetails = data.addresseeDetails;
+			$scope._policyEmail = data.policyEmail;
+			$scope._gift = data.gift;
+			if($scope.shicode) {
+				$scope.shicode = data.addresseeCity;
+			} else {
+				$scope.shicode = ""
+			}
+
+			$scope.xiancode = data.addresseeCounty;
+
+			$scope.shengcode = data.addresseeProvince;
+			if(data.addresseeCounty) {
+				$scope._cityCodeshowes = showshengfen.showname(data.addresseeProvince) + showshengfen.showname(data.addresseeCity) + showshengfen.showname(data.addresseeCounty)
+
+			} else {
+				if(data.addresseeProvince && data.addresseeCity) {
+					$scope._cityCodeshowes = showshengfen.showname(data.addresseeProvince) + showshengfen.showname(data.addresseeCity)
+
+				}
+
+			}
+			//console.log($scope._cityCodeshowe)
+			$scope.step=data.step;
+			$scope.payURL=data.payURL;
+		}
+
+	}).
+	error(function(data, status) {
+		fordata.errors_2('网络出错稍后重试')
+	});
+	localStorage.removeItem("chongjian")
+	var userdata = JSON.parse(localStorage.getItem("userdata"))
+	$scope.chongjian = function() {
+		localStorage.setItem('chenge_orderId',$scope._orderId);
+		localStorage.setItem('chongjian',"ture")
+		window.location.href="outSingle.html#/sigleone"
+	}
+	$scope.duanxin = function() {
+		if($scope._precisionPriceId) {
+			fordata.shows();
+
+			Interface.smsShareOrderInfo(orderId, userdata.userNum, $scope._precisionPriceId)
+		} else {
+			fordata.errors_2("还没报价")
+		}
+
+	}
+	$scope.diazhifu = function() {
+		if($scope._precisionPriceId) {
+			fordata.shows();
+
+			Interface.ShareOrderInfo(orderId, userdata.userNum, $scope._precisionPriceId)
+		} else {
+			fordata.errors_2("还没报价")
+		}
+	}
+	$scope.zhifu = function() {
+		if($scope.step=="needCode"){
+			$('.codes').css('display','block')
+		}else{
+			window.open($scope.payURL)
+		}
+	}
+	$scope.codessure = function() {
+		$('.codes').css('display','none');
+		Interface.getPayInfo(orderId,$scope._codes)
+	}
+}]);
+my_DataVO.controller('basic', ['$scope', '$http', '$state', '$filter', function($scope, $http, $state, $filter) {
 	//修改带出信息
 
 	var userId = localStorage.getItem("userId");
@@ -226,21 +543,17 @@ Single.controller('basic', ['$scope', '$http', '$state', '$filter', function($sc
 		}
 		//创建订单
 	$scope.Create = function() {
-		if(localStorage.getItem('chongjian')){
-			
-			$scope._oldOrderId=localStorage.getItem("chenge_orderId");
-			$scope._orderId="";
-		}
+
 		if($scope._cityCode && $scope._licenseNo && $scope._custName && $scope._phoneNo) {
 
 			console.log(userId, $scope._orderId, $scope._cityCode, $scope._licenseNo, $scope._custName, $scope._phoneNo, $scope._cappId)
-			Orderajax.setorder('outSingle.html#/siglecar', userId, $scope._licenseNo, $scope._custName, $scope._cappId, $scope._phoneNo, $scope._cityCode, $scope._orderId,$scope._callId,$scope._oldOrderId)
+			Orderajax.setorder('xian.html#/infor', userId, $scope._licenseNo, $scope._custName, $scope._cappId, $scope._phoneNo, $scope._cityCode, $scope._orderId)
 				//userId,licenseNo,ownerName,ownerID,ownerMobile,cityCode,orderId
 		}
 	}
 
 }]);
-Single.controller('basic_car', ['$scope', '$http', '$state', '$filter', function($scope, $http, $state, $filter) {
+my_DataVO.controller('basic_car', ['$scope', '$http', '$state', '$filter', function($scope, $http, $state, $filter) {
 	//修改带出信息
 	var userId = localStorage.getItem("userId");
 	var orderId = localStorage.getItem("chenge_orderId");
@@ -283,6 +596,7 @@ Single.controller('basic_car', ['$scope', '$http', '$state', '$filter', function
 		}
 
 	} else {
+		fordata.shows()
 		$http({
 			method: "POST",
 			url: intUrl + '/app/order/getOrderDetailDataVO',
@@ -301,7 +615,7 @@ Single.controller('basic_car', ['$scope', '$http', '$state', '$filter', function
 				fordata.errors_2(res.msg)
 				window.history.back(-1)
 			} else if(res.flag == "success") {
-
+				fordata.nones()
 				$scope._orderId = data.orderId;
 				$scope._createTime = fordata.formatDate(data.createTime);
 				$scope._type = data.agentName;
@@ -441,8 +755,7 @@ Single.controller('basic_car', ['$scope', '$http', '$state', '$filter', function
 			}
 
 		}
-		//根据车架号查询车辆信息
-		$scope.carne = function() {
+	$scope.carne = function() {
 			
 		if($scope._frameNo) {
 			$scope._frameNo=$scope._frameNo.toUpperCase()
@@ -453,6 +766,7 @@ Single.controller('basic_car', ['$scope', '$http', '$state', '$filter', function
 			}
 		}
 		}
+		//根据车架号查询车辆信息
 	$scope.carinfs = function() {
 		if($scope._frameNo) {
 			if(!(/^[a-zA-Z0-9]{0,17}$/.test($scope._frameNo))) {
@@ -626,7 +940,7 @@ Single.controller('basic_car', ['$scope', '$http', '$state', '$filter', function
 
 				console.log(userId, orderId, $scope._licenseNo, $scope._frameNo, $scope._engineNo, $scope._modelCode, $scope._modelName, $scope._registerDate, $scope.yes, $scope._specialCarDate, $scope._customerId, $scope._carId, $scope._seatCount, $scope._newCarPrice, $scope._licenseDate)
 				setTimeout(function() {
-					Orderajax.upCarInfo('outSingle.html#/sigleins', userId, orderId, $scope._licenseNo, $scope._frameNo, $scope._engineNo, $scope._modelCode, $scope._modelName, $scope._registerDate, $scope.yes, $scope._specialCarDate, $scope._customerId, $scope._carId, $scope._seatCount, $scope._newCarPrice, $scope._licenseDate)
+					Orderajax.upCarInfo('xian.html#/infor', userId, orderId, $scope._licenseNo, $scope._frameNo, $scope._engineNo, $scope._modelCode, $scope._modelName, $scope._registerDate, $scope.yes, $scope._specialCarDate, $scope._customerId, $scope._carId, $scope._seatCount, $scope._newCarPrice, $scope._licenseDate)
 
 				}, 300)
 
@@ -646,7 +960,8 @@ Single.controller('basic_car', ['$scope', '$http', '$state', '$filter', function
 		$scope.list_ModelN_show = true;
 	}
 }]);
-Single.controller('basic_chengbao', ['$scope', '$http', '$state', '$filter', function($scope, $http, $state, $filter) {
+
+my_DataVO.controller('basic_chengbao', ['$scope', '$http', '$state', '$filter', function($scope, $http, $state, $filter) {
 	//修改带出信息
 	$scope.sures = function() {
 
@@ -1131,6 +1446,8 @@ Single.controller('basic_chengbao', ['$scope', '$http', '$state', '$filter', fun
 			$scope._biStartDate_2 = fordata.formatDate3(res.data.biLastEffectiveDate);
 
 			$scope.cheSunAmount = res.data.cheSunAmount;
+			$scope.vehicle = $scope.cheSunAmount;
+			$scope.pilfer = $scope.cheSunAmount
 		}).
 		error(function() {
 
@@ -1538,17 +1855,22 @@ Single.controller('basic_chengbao', ['$scope', '$http', '$state', '$filter', fun
 		if($scope.agree_1) {
 			var s = {
 				"kindCode": "FORCEPREMIUM",
-				"amount": '投保',
+				"amount": 'Y',
 				"flag": '投保'
 			}
 			_kindList.push(s)
+		} else {
+
 		}
 		//机动车损失险
 		if($scope.agree_3) {
+			if(!$scope.cheSunAmount) {
+				$scope.cheSunAmount = "投保"
+			}
 			var s = {
 				"kindCode": "A",
-				"amount": '投保',
-				"flag": $scope.vehicle
+				"amount": 'Y',
+				"flag": $scope.cheSunAmount
 			}
 			_kindList.push(s)
 		}
@@ -1703,12 +2025,13 @@ Single.controller('basic_chengbao', ['$scope', '$http', '$state', '$filter', fun
 
 		}
 		console.log(jisons)
-		Orderajax.updateKindCode(jisons, "./outSingle.html#/siglebijia");
+		console.log($scope.agree_3)
+		Orderajax.updateKindCode(jisons, "xian.html#/Insurance");
 		Orderajax.getCompanys(userId, $scope._carId, $scope._cityCode);
 		localStorage.setItem("chenge_orderId", orderId);
 	}
 }]);
-Single.controller('comparison', ['$scope', '$http', '$state', '$filter', function($scope, $http, $state, $filter) {
+my_DataVO.controller('comparison', ['$scope', '$http', '$state', '$filter', function($scope, $http, $state, $filter) {
 
 	var userId = localStorage.getItem("userId");
 	var orderId = localStorage.getItem("chenge_orderId");
@@ -1766,7 +2089,7 @@ Single.controller('comparison', ['$scope', '$http', '$state', '$filter', functio
 			if(data.precisionPriceVO.flag == "success") {
 				if(data.precisionPriceVO.totalPremium > 0) {
 					$('.shous').css('display', 'none');
-					$('.shoua').css('display', 'none');
+					$('.shoua').css('display', 'blcok');
 
 					$('.one').css('display', 'block');
 
@@ -1804,126 +2127,6 @@ Single.controller('comparison', ['$scope', '$http', '$state', '$filter', functio
 					$scope._biStartDate = fordata.formatDate2(data.precisionPriceVO.biStartDate);
 
 				} else {
-					$('.shous').css('display', 'none')
-					var par = JSON.parse(sessionStorage.getItem("par"));
-					console.log(par)
-					$scope.grame = par;
-					$scope.findC = findAllCompany;
-
-					$scope.intUrl = intUrl;
-					var lisd = [];
-					$scope._ciStartDate = fordata.formatDate2(data.ciStartDate);
-					$scope._biStartDate = fordata.formatDate2(data.biStartDate);
-
-					var svd = 0;
-					for(var b = 0; b < par.length; b++) {
-						svd++
-						if(par[b].channel.length > 1) {
-							svd++
-						}
-						console.log(svd)
-					}
-
-					for(var s = 0; s < par.length; s++) {
-						$('.flogbox').css('display', 'block');
-						$('.flogbox p').css('display', 'none');
-						$('.texta').text("报价请求中请稍候。。。");
-
-						if(par[s].channel.length > 1) {
-							for(var j = 0; j < par[s].channel.length; j++) {
-								$http({
-									method: "POST",
-									url: intUrl + '/app/lnsure/loadPrecisionPrice',
-
-									params: {
-										"orderId": $scope._orderId,
-										"insurerCode": par[s].companyCode,
-										"channelCode": par[s].channel[j].localChannelCode,
-										"userId": userId
-									}
-								}).
-								success(function(res) {
-									lisd.push(res.data)
-										//console.log(res.data)
-									var data = lisd;
-									$('.shoua').css('display', 'none');
-									$('.shous').css('display', 'block');
-
-									if(svd == lisd.length) {
-										$('.flogbox').css('display', 'none');
-										$('.flogbox p').css('display', 'block');
-										$('.texta').text("");
-									}
-									if(data.flag == "success") {
-										$scope.listd = data;
-
-									} else {
-										$scope.listd = data;
-										$scope._channelCode = res.data[0].msg
-									}
-
-								}).
-								error(function() {
-									$('.flogbox').css('display', 'block');
-									$('.flogbox p').css('display', 'block');
-									$('.texta').text("网络请求失败");
-
-									if(svd == lisd.length) {
-										$('.flogbox').css('display', 'none');
-										$('.flogbox p').css('display', 'block');
-										$('.texta').text("");
-									}
-								})
-							}
-
-						} else {
-							$http({
-								method: "POST",
-								url: intUrl + '/app/lnsure/loadPrecisionPrice',
-								//url : intUrl +'/app/order/findMainOrder',
-								params: {
-									"orderId": $scope._orderId,
-									"insurerCode": par[s].companyCode,
-									"channelCode": par[s].channel[0].localChannelCode,
-									"userId": userId
-								}
-							}).
-							success(function(res) {
-								lisd.push(res.data)
-								console.log(lisd)
-								var data = lisd;
-								$('.shoua').css('display', 'none');
-								$('.shous').css('display', 'block');
-
-								if(svd == lisd.length) {
-									$('.flogbox').css('display', 'none');
-									$('.flogbox p').css('display', 'block');
-									$('.texta').text("");
-								}
-								if(data.flag == "success") {
-									$scope.listd = data;
-
-								} else {
-									$scope.listd = data;
-									$scope._channelCode = res.data[0].msg
-								}
-
-							}).
-							error(function() {
-								$('.flogbox').css('display', 'block');
-								$('.flogbox p').css('display', 'block');
-								$('.texta').text("网络请求失败");
-								console.log(sv + '点点' + lisd.length)
-
-								if(svd == lisd.length) {
-									$('.flogbox').css('display', 'none');
-									$('.flogbox p').css('display', 'block');
-									$('.texta').text("");
-								}
-							})
-
-						}
-					}
 
 				}
 				//奖励积分
@@ -1948,13 +2151,58 @@ Single.controller('comparison', ['$scope', '$http', '$state', '$filter', functio
 	$scope.tdif = function() {
 		$scope.td_show = !$scope.td_show;
 	}
+	$scope.suanjia = function() {
+		fordata.shows();
+		var lisd = [];
+		$('.shous').css('display', 'block');
+		$('.shoua').css('display', 'none');
+		$http({
+			method: "POST",
+			url: intUrl + '/app/lnsure/reloadPrecisionPrice',
+
+			params: {
+				"orderId": $scope._orderId,
+				//				"insurerCode": $scope._insureComCode,
+				//				"channelCode":$scope._channelCode,
+				"userId": userId
+			}
+		}).
+		success(function(res) {
+			console.log(res)
+			lisd.push(res.data)
+			var data = lisd;
+			$('.shoua').css('display', 'none');
+			$('.shous').css('display', 'block');
+			fordata.nones()
+
+			if(data.flag == "success") {
+				$scope.listd = data;
+
+			} else {
+				$scope.listd = data;
+				$scope._channelCode = res.data[0].msg
+			}
+
+		}).
+		error(function() {
+			$('.flogbox').css('display', 'block');
+			$('.flogbox p').css('display', 'block');
+			$('.texta').text("网络请求失败");
+			console.log(sv + '点点' + lisd.length)
+
+		})
+
+	}
+	$scope.bijia = function() {
+		window.location.href = "xian.html#/bijia"
+	}
 	$scope.toubao = function(item, data) {
 		console.log(item);
 		console.log(orderId, item[0].precisionPriceId, item[0].biStartDate, item[0].ciStartDate)
-		Orderajax.chooseInsurance(orderId, item[0].precisionPriceId, item[0].biStartDate, item[0].ciStartDate)
+		Orderajax.chooseInsurance("xian.html#/infor", orderId, item[0].precisionPriceId, item[0].biStartDate, item[0].ciStartDate)
 	}
 }]);
-Single.controller('comparison_2', ['$scope', '$http', '$state', '$filter', function($scope, $http, $state, $filter) {
+my_DataVO.controller('comparison_2', ['$scope', '$http', '$state', '$filter', function($scope, $http, $state, $filter) {
 
 	var userId = localStorage.getItem("userId");
 	var orderId = localStorage.getItem("chenge_orderId");
@@ -2012,9 +2260,9 @@ Single.controller('comparison_2', ['$scope', '$http', '$state', '$filter', funct
 			$('.shous').css('display', 'none')
 			var par = JSON.parse(sessionStorage.getItem("par"));
 			console.log(par)
-			$scope.grame = par;
+				//			$scope.grame = par;
 			$scope.findC = findAllCompany;
-			var sv;
+			//			var sv;
 			$scope.intUrl = intUrl;
 			var lisd = [];
 			$scope._ciStartDate = fordata.formatDate2(data.ciStartDate);
@@ -2027,7 +2275,10 @@ Single.controller('comparison_2', ['$scope', '$http', '$state', '$filter', funct
 				}
 				console.log(svd)
 			}
+			setTimeout(function() {
+				console.log($scope._channelCode);
 
+			}, 2000)
 			for(var s = 0; s < par.length; s++) {
 				$('.flogbox').css('display', 'block');
 				$('.flogbox p').css('display', 'none');
@@ -2047,23 +2298,28 @@ Single.controller('comparison_2', ['$scope', '$http', '$state', '$filter', funct
 							}
 						}).
 						success(function(res) {
-							lisd.push(res.data)
-								//console.log(res.data)
-							var data = lisd;
-							$('.shoua').css('display', 'none');
-							$('.shous').css('display', 'block');
-
-							if(svd == lisd.length) {
-								$('.flogbox').css('display', 'none');
-								$('.flogbox p').css('display', 'block');
-								$('.texta').text("");
-							}
-							if(data.flag == "success") {
-								$scope.listd = data;
+							if(res.flag == "error") {
 
 							} else {
-								$scope.listd = data;
-								$scope._channelCode = res.data[0].msg
+								lisd.push(res.data)
+									//console.log(res.data)
+								var data = lisd;
+								$('.shoua').css('display', 'none');
+								$('.shous').css('display', 'block');
+
+								if(svd == lisd.length) {
+									$('.flogbox').css('display', 'none');
+									$('.flogbox p').css('display', 'block');
+									$('.texta').text("");
+								}
+								if(data.flag == "success") {
+									$scope.listd = data;
+
+								} else {
+									$scope.listd = data;
+									$scope._channelCode = res.data[0].msg
+								}
+
 							}
 
 						}).
@@ -2093,23 +2349,27 @@ Single.controller('comparison_2', ['$scope', '$http', '$state', '$filter', funct
 						}
 					}).
 					success(function(res) {
-						lisd.push(res.data)
-						console.log(lisd)
-						var data = lisd;
-						$('.shoua').css('display', 'none');
-						$('.shous').css('display', 'block');
-
-						if(svd == lisd.length) {
-							$('.flogbox').css('display', 'none');
-							$('.flogbox p').css('display', 'block');
-							$('.texta').text("");
-						}
-						if(data.flag == "success") {
-							$scope.listd = data;
+						if(res.flag == "error") {
 
 						} else {
-							$scope.listd = data;
-							$scope._channelCode = res.data[0].msg
+							lisd.push(res.data)
+							console.log(lisd)
+							var data = lisd;
+							$('.shoua').css('display', 'none');
+							$('.shous').css('display', 'block');
+
+							if(svd == lisd.length) {
+								$('.flogbox').css('display', 'none');
+								$('.flogbox p').css('display', 'block');
+								$('.texta').text("");
+							}
+							if(data.flag == "success") {
+								$scope.listd = data;
+
+							} else {
+								$scope.listd = data;
+								$scope._channelCode = res.data[0].msg
+							}
 						}
 
 					}).
@@ -2153,14 +2413,14 @@ Single.controller('comparison_2', ['$scope', '$http', '$state', '$filter', funct
 	$scope.toubao = function(item, data) {
 		console.log(item);
 		console.log(orderId, item[0].precisionPriceId, item[0].biStartDate, item[0].ciStartDate)
-		Orderajax.chooseInsurance("outSingle.html#/sigleappli", orderId, item[0].precisionPriceId, item[0].biStartDate, item[0].ciStartDate)
+		Orderajax.chooseInsurance("tpl/getData/xian.html", orderId, item[0].precisionPriceId, item[0].biStartDate, item[0].ciStartDate)
 	}
 }]);
-
-Single.controller('basic_applic', ['$scope', '$http', '$state', '$filter', function($scope, $http, $state, $filter) {
+my_DataVO.controller('basic_applic', ['$scope', '$http', '$state', '$filter', function($scope, $http, $state, $filter) {
 	//修改带出信息
 	var userId = localStorage.getItem("userId");
 	var orderId = localStorage.getItem("chenge_orderId");
+	fordata.shows()
 	$http({
 		method: "POST",
 		url: intUrl + '/app/order/getOrderDetailDataVO',
@@ -2175,10 +2435,11 @@ Single.controller('basic_applic', ['$scope', '$http', '$state', '$filter', funct
 		var data = res.data;
 		console.log(res)
 		if(res.flag == "error") {
-			console.log(res.msg);
+
 			fordata.errors_2(res.msg)
 			window.history.back(-1)
 		} else if(res.flag == "success") {
+			fordata.nones()
 			$scope._orderId = data.orderId;
 			$scope._createTime = fordata.formatDate(data.createTime);
 			$scope._type = data.agentName;
@@ -2192,6 +2453,8 @@ Single.controller('basic_applic', ['$scope', '$http', '$state', '$filter', funct
 			$scope._showId = data.showId;
 			$scope._registerDate = fordata.formatDate(data.registerDate);
 			$scope._specialCarDate = fordata.formatDate(data.specialCarDate);
+			$scope._ownerName = data.ownerName;
+			$scope._ownerMobile = data.ownerMobile;
 
 			$scope.sds = function() {
 				//alert($scope.yes)
@@ -2259,8 +2522,13 @@ Single.controller('basic_applic', ['$scope', '$http', '$state', '$filter', funct
 			$scope.xiancode = data.addresseeCounty;
 			$scope.shicode = data.addresseeCity;
 			$scope.shengcode = data.addresseeProvince;
+			if(data.addresseeCounty) {
+				$scope._cityCodeshowe = showshengfen.showname(data.addresseeProvince) + showshengfen.showname(data.addresseeCity) + showshengfen.showname(data.addresseeCounty)
 
-			$scope._cityCodeshowe = showshengfen.showname(data.addresseeProvince) + showshengfen.showname(data.addresseeCity) + showshengfen.showname(data.addresseeCounty)
+			} else {
+				$scope._cityCodeshowe = showshengfen.showname(data.addresseeProvince) + showshengfen.showname(data.addresseeCity)
+
+			}
 			$scope._addresseeDetails = data.addresseeDetails;
 			console.log(data.addresseeDetails)
 				//配送信息
@@ -2317,9 +2585,6 @@ Single.controller('basic_applic', ['$scope', '$http', '$state', '$filter', funct
 
 		$scope.phone_show = !$scope.phone_show;
 	}
-	$scope.cityBlock = function() {
-		$('.selects').css('display', 'block')
-	}
 
 	$scope.as1 = function() {
 		//alert(1)
@@ -2354,16 +2619,26 @@ Single.controller('basic_applic', ['$scope', '$http', '$state', '$filter', funct
 	$scope.as3 = function() {
 		if($scope.agree_3) {
 			$("#sw").attr('disabled', "disabled");
+			$scope._addresseeName = $scope._ownerName;
+
 		} else {
 			$("#sw").removeAttr('disabled')
+			$scope._addresseeName = ''
 		}
 	}
 	$scope.as4 = function() {
 		if($scope.agree_4) {
 			$("#sw1").attr('disabled', "disabled");
+			$scope._addresseeMobile = $scope._ownerMobile;
 		} else {
 			$("#sw1").removeAttr('disabled')
+			$scope._addresseeMobile = ''
 		}
+	}
+	$scope.cityBlock = function() {
+		$('.selects').css('display', 'block');
+		$scope.sheng = shengs_1.province;
+
 	}
 	$scope.cityBlock = function() {
 		$('.selects').css('display', 'block');
@@ -2395,7 +2670,8 @@ Single.controller('basic_applic', ['$scope', '$http', '$state', '$filter', funct
 			$scope.shicode = item[6]
 			$scope._cityCode = item[6];
 			$scope.shinames = $scope._cityCodeshowe
-			$scope._nmes = $scope.shinames
+			$scope._nmes = $scope.shinames;
+
 		}
 
 	}
@@ -2417,8 +2693,7 @@ Single.controller('basic_applic', ['$scope', '$http', '$state', '$filter', funct
 	$scope.emil = function() {
 		if($scope._policyEmail) {
 			if(!(/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test($scope._policyEmail))) {
-
-				fordata.errors_2("邮箱格式不对，请重填")
+				fordata.errors_2('邮箱格式不对，请重填')
 				return false;
 			}
 		}
@@ -2426,8 +2701,7 @@ Single.controller('basic_applic', ['$scope', '$http', '$state', '$filter', funct
 	$scope.shoji = function() {
 			if($scope._addresseeMobile) {
 				if(!(/^(13[0-9]|14[0-9]|15[0-9]|18[0-9])\d{8}$/.test($scope._addresseeMobile))) {
-
-					fordata.errors_2("手机号式不对，请重填")
+					fordata.errors_2('手机号格式不对，请重填')
 					return false;
 				}
 			}
@@ -2440,268 +2714,180 @@ Single.controller('basic_applic', ['$scope', '$http', '$state', '$filter', funct
 		var insuredAsOwner = $scope.agree_2;
 		var insuredAsAddress = $scope.agree_5;
 		var citys = $scope.city;
-		var addresseeCounty = $scope.xiancode;
+		if($scope.xiancode) {
+			var addresseeCounty = $scope.xiancode;
+		} else {
+			var addresseeCounty = ""
+		}
+
 		var addresseeCity = $scope.shicode;
 		var addresseeProvince = $scope.shengcode;
 		var addresseeDetails = $scope._addresseeDetails;
+		$scope._gift = "不赠送";
+		$scope._giftMan = "无";
+		$scope._giftType = true;
 
-			$scope._giftType = true;
-			$scope._gift = "不赠送";
-		$scope._giftMan="无";
-
-			$('.flogbox').css('display', 'block');
+		$('.flogbox').css('display', 'block');
 		$('.flogbox p').css('display', 'none');
 		$('.texta').text("请求中，请稍候...");
-		console.log(userId, orderId, applicantAsOwner, $scope._applicantName, $scope._applicantIdNo, $scope._applicantMobile, insuredAsOwner, $scope._insuredName, $scope._insuredIdNo, $scope._insuredMobile, insuredAsAddress, $scope._insuredAddress, $scope._gift,$scope._giftMan, $scope._giftType, $scope._addresseeName, $scope._addresseeMobile, $scope._addresseeDetails, addresseeCounty, addresseeCity, addresseeProvince, $scope._policyEmail, $scope._customerId, $scope._addressAsGift, $scope._giftAddresseeDetails, $scope._giftAddresseeName, $scope._giftAddresseeMobile, $scope._giftAddresseeCounty, $scope._giftAddresseeCity, $scope._giftAddresseeProvince)
-		Orderajax.saveAdditionalInfo(userId, orderId, applicantAsOwner, $scope._applicantName, $scope._applicantIdNo, $scope._applicantMobile, insuredAsOwner, $scope._insuredName, $scope._insuredIdNo, $scope._insuredMobile, insuredAsAddress, $scope._insuredAddress, $scope._gift,$scope._giftMan, $scope._giftType, $scope._addresseeName, $scope._addresseeMobile, $scope._addresseeDetails, addresseeCounty, addresseeCity, addresseeProvince, $scope._policyEmail, $scope._customerId, $scope._addressAsGift, $scope._giftAddresseeDetails, $scope._giftAddresseeName, $scope._giftAddresseeMobile, $scope._giftAddresseeCounty, $scope._giftAddresseeCity, $scope._giftAddresseeProvince)
-		localStorage.setItem("_orderId", orderId)
+		console.log(userId, orderId, applicantAsOwner, $scope._applicantName, $scope._applicantIdNo, $scope._applicantMobile, insuredAsOwner, $scope._insuredName, $scope._insuredIdNo, $scope._insuredMobile, insuredAsAddress, $scope._insuredAddress, $scope._gift, $scope._giftMan, $scope._giftType, $scope._addresseeName, $scope._addresseeMobile, $scope._addresseeDetails, addresseeCounty, addresseeCity, addresseeProvince, $scope._policyEmail, $scope._customerId, $scope._addressAsGift, $scope._giftAddresseeDetails, $scope._giftAddresseeName, $scope._giftAddresseeMobile, $scope._giftAddresseeCounty, $scope._giftAddresseeCity, $scope._giftAddresseeProvince)
+		Orderajax.saveAdditionalInfo_2(userId, orderId, applicantAsOwner, $scope._applicantName, $scope._applicantIdNo, $scope._applicantMobile, insuredAsOwner, $scope._insuredName, $scope._insuredIdNo, $scope._insuredMobile, insuredAsAddress, $scope._insuredAddress, $scope._gift, $scope._giftMan, $scope._giftType, $scope._addresseeName, $scope._addresseeMobile, $scope._addresseeDetails, addresseeCounty, addresseeCity, addresseeProvince, $scope._policyEmail, $scope._customerId, $scope._addressAsGift, $scope._giftAddresseeDetails, $scope._giftAddresseeName, $scope._giftAddresseeMobile, $scope._giftAddresseeCounty, $scope._giftAddresseeCity, $scope._giftAddresseeProvince)
+
 	}
 
 }]);
-Single.controller('detailed_hebao', ['$scope', '$http', '$state', function($scope, $http, $state) {
-	//跳转修改页面
-	var userId = localStorage.getItem("userId");
-	var orderId = localStorage.getItem("_orderId");
 
-	$http({
-		method: "POST",
-		url: intUrl + '/app/order/getOrderDetailDataVO',
-		//url : intUrl +'/app/order/findMainOrder',
-		params: {
-			"userId": userId,
-			"orderId": orderId
-				//"orderStatus":"未完成"
-		}
-	}).
-	success(function(res) {
-		var data = res.data;
-
-		console.log(res)
-		if(res.flag == "error") {
-			//alert(res.msg);
-			//fordata.errors_2(res.msg)
-			$('.flogbox').css('display', 'block')
-			$('.flogbox p').css('display', 'block')
-			$('.flogbox em').text(res.msg)
-				//window.history.back(-1)
-		} else if(res.flag == "success") {
-
-			if(data.orderStatus == "已失效") {
-				$('.shixiao').css('display', 'block');
-				$('.adisable').css('display', 'none');
-			} else if(data.orderStatus == "未完成") {
-				$('.weiwanc').css('display', 'block');
-			} else if(data.orderStatus == "已支付") {
-				$('.pad').css('display', 'block');
-				$('.adisable').css('display', 'none');
-			} else if(data.orderStatus == "待支付") {
-				$('.daizhi').css('display', 'block');
-				$('.adisable').css('display', 'none');
-			} else if(data.orderStatus == "核保中") {
-				$('.pad').css('display', 'block');
-				$('.pad').text("核保中");
-				$('.adisable').css('display', 'none');
-			} else {
-				$('.pad').css('display', 'block');
-				$('.pad').text(data.orderStatus);
-				$('.adisable').css('display', 'none');
-			}
-			$('.flogbox').css('display', 'none')
-			$('.flogbox em').text('')
-
-			$scope._orderId = data.orderId;
-			$scope._createTime = fordata.formatDate(data.createTime);
-			$scope._type = data.agentName;
-			$scope._cityCode = data.cityCode;
-			console.log(vinc)
-				//显示地址
-			$scope._cityCodeshowe = showshengfen.shows(data.cityCode)
-
-			$scope._custName = data.custName;
-			$scope._phoneNo = data.phoneNo;
-			$scope._cappId = data.cappId;
-			$scope._showId = data.showId;
-			if(data.applicantAsOwner == true) { //投保人信息
-				$scope._applicantName = data.custName;
-				$scope._applicantMobile = data.phoneNo;
-				$scope._applicantIdNo = data.cappId;
-			} else {
-				$scope._applicantName = data.applicantName;
-				$scope._applicantMobile = data.applicantMobile;
-				$scope._applicantIdNo = data.applicantIdNo;
-			}
-			if(data.insuredAsOwner == true) { //被保人信息
-				$scope._insuredName = data.custName;
-				$scope._insuredMobile = data.phoneNo;
-				$scope._insuredIdNo = data.cappId;
-			} else {
-				$scope._insuredName = data.insuredName;
-				$scope._insuredMobile = data.insuredMobile;
-				$scope._insuredIdNo = data.insuredIdNo;
-			}
-			//车辆信息
-			$scope._licenseNo = data.licenseNo;
-			$scope._modelName = data.modelName;
-			$scope._frameNo = data.frameNo;
-			$scope._engineNo = data.engineNo;
-			$scope._licenseDate = fordata.formatDate(data.licenseDate);
-			$scope._registerDate = fordata.formatDate2(data.registerDate)
-			if(data.specialCarFlag == false) {
-				$scope._specialCarFlag = "否";
-			} else if(data.specialCarFlag == true) {
-				$scope._specialCarFlag = "是";
-			}
-			//承保信息
-
-			if(data.precisionPriceVO.insureComCode) {
-
-				$scope._insureComCode = data.precisionPriceVO.insureComCode;
-				$scope.findC = findAllCompany;
-			} else {
-				$scope.findC = '0';
-				$scope._insureComCode = '0'
-
-			}
-			$scope._totalPremium = data.precisionPriceVO.totalPremium;
-			$scope._Credit = data.precisionPriceVO.credit;
-			$scope._biPremium = data.precisionPriceVO.biPremium;
-			$scope._ciPremium = data.precisionPriceVO.ciPremium;
-			$scope._vehicleTaxPremium = data.precisionPriceVO.vehicleTaxPremium
-			$scope._ciStartDate = fordata.formatDate(data.precisionPriceVO.ciStartDate); //起保日期
-			$scope._biStartDate = fordata.formatDate(data.precisionPriceVO.biStartDate);
-
-			var arr1 = data.precisionPriceVO.dealCredit;
-			var arr2 = new Array();
-			for(var i = 0; i < arr1.length; i++) {
-				arr2.push([i + 1, arr1[i]]);
-			}
-			$scope._dealCredit = arr2;
-			//$scope._dealCredit = [
-			//					["100积分,优惠券"],["200积分,创建订单奖励"],["300积分,徒弟出单奖励"]
-			//				];
-
-			//险别信息
-			$scope.kindList = data.precisionPriceVO.kindList;
-			//配送信息
-			$scope._addresseeName = data.addresseeName;
-			$scope._addresseeMobile = data.addresseeMobile;
-			$scope._addresseeDetails = data.addresseeDetails;
-			$scope._policyEmail = data.policyEmail;
-			$scope._gift= data.gift;
-		}
-
-	}).
-	error(function(data, status) {
-
-		fordata.errors_2("出错稍后重试")
-	});
-	$scope._chenge = function() {
-		console.log($scope._orderId)
-
-		localStorage.setItem("chenge_orderId", $scope._orderId);
-	};
-	$scope._chengeno = function() {
-		if($scope._licenseNo && $scope._modelName && $scope._frameNo && $scope._engineNo) {
-			localStorage.setItem("chenge_orderId", $scope._orderId);
-			window.location.href = "./xian.html#/Insurance"
-		} else {
-			$('.flogbox').css('display', 'block');
-			$('.flogbox em').text('车辆信息不全，请补全信息')
-		}
-	};
-	$scope.sureque = function() {
-		if($scope._licenseNo && $scope._modelName && $scope._frameNo && $scope._engineNo && $scope._totalPremium && $scope._addresseeName && $scope._addresseeMobile && $scope._addresseeDetails) {
-			fordata.shows();
-			Interface.hebao(orderId, userId)
-
-		} else {
-			$('.flogbox').css('display', 'block')
-			$('.flogbox em').text('信息不全，请补全信息')
-		}
-	}
-	$scope.sure = function() {
-
-		$('.flogbox').css('display', 'none')
-	}
-
-	$scope.phone_show = true;
-	$scope.firstName = localStorage.getItem("usernume");
-	$scope.fistPhoto = localStorage.getItem("photoUr");
-	$scope.singout = function() {
-		localStorage.removeItem('user');
-
-	}
-	$scope.phone_tag = function() {
-
-		$scope.phone_show = !$scope.phone_show;
-	};
-
-	$('.flogbox').css('display', 'block')
-	$('.flogbox p').css('display', 'none')
-	$('.flogbox em').text('数据请求中。。。')
-
-	$scope.sures = function() {
-		console.log(2)
-		$('.flogbox').css('display', 'none')
-			//window.location.href = "./MyOrder.html#/myorder"
-	}
-	var userdata=JSON.parse(localStorage.getItem("userdata")) 
-	$scope.duanxin=function(){
-		if($scope._precisionPriceId){
-			fordata.shows();
-		
-		Interface.smsShareOrderInfo(orderId,userdata.userNum,$scope._precisionPriceId)
-		}else{
-			fordata.errors_2("还没报价")
-		}
-		
-	}
-	$scope.chongjian = function() {
-		localStorage.setItem('chenge_orderId',$scope._orderId);
-		localStorage.setItem('chongjian',"ture")
-		window.location.href="outSingle.html#/sigleone"
-	}
-		$scope.diazhifu = function() {
-		if($scope._precisionPriceId) {
-			fordata.shows();
-
-			Interface.ShareOrderInfo(orderId, userdata.userNum, $scope._precisionPriceId)
-		} else {
-			fordata.errors_2("还没报价")
-		}
-	}
-	$scope.zhifu = function() {
-		if($scope.step=="needCode"){
-			$('.codes').css('display','block')
-		}else{
-			window.open("https://www.baidu.com/")
-		}
-	}
-	$scope.codessure = function() {
-		$('.codes').css('display','none');
-		Interface.getPayInfo(orderId,$scope._codes)
-	}
-}]);
-
-Single.filter("shens", function() {
+my_DataVO.filter("codelfilter", function() {
 	return function(code) {
-		//		if(code.branchName.charAt(str.length - 1)=="市"){
-		//			return code
-		//		}
+		switch(code) {
+			case 'A':
+				return '机动车损失险'
+				break;
+			case 'MA':
+				return '不计免赔机动车损失险'
+				break;
+			case 'X1':
+				return '发动机涉水损失险'
+				break;
+			case 'Z3':
+				return '机动车损失险无法找到第三方特约险'
+				break;
+			case 'B':
+				return '商业第三者责任险'
+				break;
+			case 'MB':
+				return '不计免赔商业第三者责任险'
+				break;
+			case 'G1':
+				return '全车盗抢险'
+				break;
+			case 'MG1':
+				return '不计免赔全车盗抢险'
+				break;
+			case 'D3':
+				return '车上人员责任保险(驾驶员)'
+				break;
+			case 'MD3':
+				return '不计免赔车上人员责任保险(驾驶员)'
+				break;
+			case 'D4':
+				return '车上人员责任保险(乘客)'
+				break;
+			case 'MD4':
+				return '不计免赔车上人员责任保险(乘客)'
+				break;
+			case 'Q3':
+				return '指定修理厂险'
+				break;
+			case 'Z':
+				return '自然损失险'
+				break;
+			case 'F':
+				return '玻璃单独破碎险'
+				break;
+			case 'L':
+				return '车身划痕损失险'
+				break;
+			case 'ML':
+				return '不计免赔车身划痕损失险'
+				break;
+			case 'FORCEPREMIUM':
+				return '交强险'
+				break;
+			case 'Z2':
+				return '修理期间费用补偿险'
+				break;
+
+		}
+
+	}
+});
+my_DataVO.filter("amountfilter", function() {
+	return function(code) {
+		switch(code) {
+			case 'Y':
+				return '投保'
+				break;
+			case '投保':
+				return '投保'
+				break;
+			case '10000':
+				return '1万'
+				break;
+			case '20000':
+				return '2万'
+				break;
+			case '30000':
+				return '3万'
+				break;
+			case '40000':
+				return '4万'
+				break;
+			case '50000':
+				return '5万'
+				break;
+			case '100000':
+				return '10万'
+				break;
+			case '150000.00':
+				return '15万'
+				break;
+			case '200000':
+				return '20万'
+				break;
+			case '300000':
+				return '30万'
+				break;
+			case '500000':
+				return '50万'
+				break;
+			case '1000000':
+				return '100万'
+				break;
+			case '1500000':
+				return '150万'
+				break;
+			case '3000000':
+				return '300万'
+				break;
+			case '5000000':
+				return '500万'
+				break;
+			case '2000000':
+				return '200万'
+				break;
+			default:
+				return code
+				break;
+		}
+
+	}
+});
+my_DataVO.filter("flage_phone", function() {
+	return function(code) {
 		var s;
 		if(code) {
-			code.forEach(function(item) {
-				var str = item.branchName;
-
-				if(item.branchName.charAt(str.length - 1) == "市") {
-					//return item
-					//s=item
-					//console.log(s);
-					//return true
-				}
-			})
+			s = code.substring(0, 3) + "****" + code.substring(8, 11);
 		}
+
 		console.log(s)
 		return s
+	}
+});
+my_DataVO.filter("flage", function() {
+	return function(code) {
+		switch(code) {
+			case '1':
+				return '国产玻璃'
+				break;
+			case '2':
+				return '进口玻璃'
+				break;
+
+			default:
+				return code
+				break;
+		}
+
 	}
 });
