@@ -95,35 +95,12 @@ var Interface = {
 		})
 
 	},
-	//拨打电话之后触发的方法
-	callBack:function(userId,orderId,exten,phoneNum){     
-		$.ajax({
-			type:"post",
-			url:intUrl+'/qiMoCall/toCall',
-			data:{
-				"userId":userId,
-				"exten":exten,
-				"phoneNum":phoneNum,
-				"orderId":orderId
-			},
-			success: function(res){
-				console.log(res);
-				var data = res.data
-				if(res.flag == "success"){
-					console.log("成功")
-				}else if(res.flag == "error"){
-					console.log(res.msg);
-				}
-			},
-			error:function(){
-				alert("请求信息错误！");
-			}
-		})
-	},
+
 	Province: function() { //
 		$.ajax({
 			type: 'get',
 			url: "./js/sheng.json",
+
 			data: {
 
 			},
@@ -147,7 +124,7 @@ var Interface = {
 		$.ajax({
 			type: 'post',
 			url: intUrl + "/app/area/getCityByProvince",
-
+	
 			data: {
 				"province": "00"
 			},

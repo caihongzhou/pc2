@@ -177,7 +177,6 @@ my_DataVO.controller('detailed', ['$scope', '$http', '$state', function($scope, 
 
 			$scope._custName = data.custName;
 			$scope._phoneNo = data.phoneNo;
-			$scope._number=$scope._phoneNo;
 			$scope._cappId = data.cappId;
 			$scope._showId = data.showId;
 			if(data.applicantAsOwner == true) { //投保人信息
@@ -278,7 +277,6 @@ my_DataVO.controller('detailed', ['$scope', '$http', '$state', function($scope, 
 	error(function(data, status) {
 		fordata.errors_2('网络出错稍后重试')
 	});
-<<<<<<< .mine
 	localStorage.removeItem("chongjian")
 	var userdata = JSON.parse(localStorage.getItem("userdata"))
 	$scope.chongjian = function() {
@@ -290,18 +288,6 @@ my_DataVO.controller('detailed', ['$scope', '$http', '$state', function($scope, 
 		if($scope._precisionPriceId) {
 			fordata.shows();
 
-=======
-	//点击拨打的phone_call方法
-	$scope.phone_call=function(id){
-		Interface.callBack(userId,orderId,"18910654027","13020078383");
-		//Interface.callBack(userId,orderId,exten,$scope._number);
-	}
-	//点击挂断执行的方法
-	$scope.phone_hangUp=function(){
-	//	alert("2");
-	}
-	
->>>>>>> .r171
 			Interface.smsShareOrderInfo(orderId, userdata.userNum, $scope._precisionPriceId)
 		} else {
 			fordata.errors_2("还没报价")
